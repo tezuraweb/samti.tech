@@ -1,0 +1,237 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-appearance: none;
+    -webkit-text-size-adjust: none;
+}
+  
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    background-color: $white;
+}
+  
+body {
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: "Sansation", sans-serif;
+    background-color: $black;
+    background-position: 0 0;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    color: $white;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.1;
+    min-width: $containerMinWidth;
+    overflow-x: hidden;
+    overflow-anchor: none;
+
+    &.no-scroll {
+        overflow: hidden;
+        height: 100%;
+    }
+
+    @media (max-width: $tablet-breakpoint-1) {
+        font-size: 16px;
+    }
+}
+  
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+p {
+    margin: 0;
+    padding: 0;
+}
+  
+a {
+    text-decoration: none;
+    color: inherit;
+}
+  
+ul {
+    list-style-type: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+}
+
+.container {
+    max-width: $containerMaxWidth;
+    margin: 0 auto;
+
+    &__base {
+        padding: 0 260px;
+    }
+
+    &__medium {
+        padding: 0 165px;
+    }
+
+    &__wide {
+        padding: 0 50px;
+    }
+
+    &__noPadding {
+        padding: 0;
+    }
+
+    @media (max-width: $desktop-breakpoint) {
+        &__base {
+            padding: 0 235px;
+        }
+    }
+
+    @media (max-width: $laptop-breakpoint-2) {
+        &__base {
+            padding: 0 125px;
+        }
+
+        &__medium {
+            padding: 0 75px;
+        }
+    
+        &__wide {
+            padding: 0;
+        }
+    }
+
+    @media (max-width: $mobile-breakpoint) {
+        &__base {
+            padding: 0;
+        }
+
+        &__medium {
+            padding: 0 10px;
+        }
+    }
+}
+
+.section {
+    margin-bottom: 40px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+    
+    &__title {
+        font-family: 'Trispace';
+        font-size: 64px;
+        line-height: 1;
+        font-weight: 600;
+        margin-bottom: 70px;
+        max-width: 770px;
+        position: relative;
+        z-index: auto;
+        margin: 100px 0;
+
+        &--text {
+            position: relative;
+            display: block;
+            z-index: 1;
+        }
+
+        &::after {
+            content: '';
+            width: 100%;
+            height: 25px;
+            background-color: $violet2;
+            position: absolute;
+            bottom: -7px;
+            left: 0;
+            z-index: 0;
+        }
+    }
+
+    @media (max-width: $desktop-breakpoint) {
+        &__title {
+            font-size: 50px;
+        }
+    }
+
+    @media (max-width: $laptop-breakpoint-2) {
+        &__title {
+            max-width: 500px;
+        }
+    }
+
+    @media (max-width: $tablet-breakpoint-1) {
+        &__title {
+            margin: 55px auto;
+            font-size: 22px;
+            font-weight: 400;
+            width: fit-content;
+
+            &--text {
+                display: inline-block;
+            }
+
+            &::before {
+                content: '// ';
+            }
+
+            &::after {
+                height: 4px;
+            }
+        }
+    }
+
+    @media (max-width: $mobile-breakpoint) {
+        &__title {
+            width: 100%;
+            padding-left: 50px;
+            margin: 50px 0 30px;
+        
+            &::after {
+                width: 90%;
+            }
+        }
+    }
+}
+
+.button {
+    background-color: $blue2;
+    color: $white;
+    position: relative;
+    display: block;
+    font-size: 64px;
+    line-height: 1;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+
+    @media (max-width: $laptop-breakpoint-1) {
+        font-size: 40px;
+    }
+}
+
+.error {
+    &__wrapper {
+        height: 60vh;
+        position: relative;
+    }
+
+    &__msg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-transform: uppercase;
+        color: $violet;
+    }
+}
+  

@@ -1,0 +1,89 @@
+{% set socials = [
+    {
+        id: 'telegram',
+        link: '',
+        title: 'Telegram'
+    },
+    {
+        id: 'facebook',
+        link: '',
+        title: 'Facebook'
+    },
+    {
+        id: 'linkedin',
+        link: '',
+        title: 'LinkedIn'
+    },
+    {
+        id: 'github',
+        link: '',
+        title: 'GitHub'
+    },
+    {
+        id: 'instagram',
+        link: '',
+        title: 'Instagram'
+    }
+] %}
+
+{% set infoLinks = [
+    {
+        title: 'Start a project',
+        id: 'startProjectButton'
+    },
+    {
+        link: '',
+        title: 'Other inquiry'
+    },
+    {
+        link: '',
+        title: 'Privacy policy'
+    },
+    {
+        link: '',
+        title: 'Terms of service'
+    }
+] %}
+
+<footer class="footer">
+    <div class="footer__column container__noPadding">
+        <ul class="footer__social">
+            {% for item in socials %}
+                <li class="footer__social--item">
+                    <a href="{{ item.link }}" class="footer__social--link">
+                        <span class="footer__social--text">{{ item.title }}</span>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="footer__column footer__column--middle container__base">
+        <div class="footer__wrapper">
+            <ul class="footer__links">
+                {% for item in infoLinks %}
+                    <li class="footer__links--item">
+                            {% if item.link %}
+                                <a href="{{ item.link }}" class="footer__links--link">
+                                    {{ item.title }}
+                                </a>
+                            {% else %}
+                                <div {% if item.id %}id="{{ item.id }}"{% endif %} class="footer__links--link">
+                                    {{ item.title }}
+                                </div>
+                            {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+            <button class="footer__button button"></button>
+        </div>
+    </div>
+    <div class="footer__column footer__column--last container__base">
+        <div class="footer__wrapper footer__wrapper--cat">
+            <div class="footer__cat">
+                {% set includeIcon = 'cat' %}
+                {% include 'includes/svg.njk' %}
+            </div>
+            <div class="footer__year">2024</div>
+        </div>
+    </div>
+</footer>

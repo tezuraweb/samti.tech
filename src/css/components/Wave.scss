@@ -1,0 +1,78 @@
+.wave {
+    position: absolute;
+    opacity: .4;
+    width: 3000px;
+    height: 2500px;
+    border-radius: 45%;
+    background: white;
+
+    @keyframes rotate {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    &.-one {
+        animation: rotate 15000ms infinite ease-out;
+        opacity: 70%;
+        bottom: 50%;
+        right: -10%;
+        border-radius: 48%;
+        background: rgb(0, 30, 108);
+        background: linear-gradient(180deg, $blue 0%, $violet 100%);
+    }
+
+    &.-two {
+        animation: rotate 14500ms infinite linear;
+        opacity: 45%;
+        bottom: 50%;
+        right: -10%;
+        border-radius: 48%;
+        background: rgb(0, 30, 108);
+        background: linear-gradient(180deg, $blue 0%, $violet 100%);
+    }
+
+    &.-three {
+        animation: rotate 16000ms infinite linear;
+        opacity: 80%;
+        top: 80%;
+        background: linear-gradient(180deg, $darkBlue 0%, $black 100%);
+    }
+
+    &.-four {
+        animation: rotate 16500ms infinite linear;
+        opacity: 80%;
+        top: 85%;
+        background: linear-gradient(180deg, $darkBlue 0%, $black 100%);
+    }
+
+    @media (max-width: $tablet-breakpoint-1) {
+        &.-three, &.-four {
+            display: none;
+        }
+    }
+
+    @media (max-width: $tablet-breakpoint-2) {
+        width: 1000px;
+        height: 1050px;
+
+        &.-one, &.-two {
+            border-radius: 50%;
+            right: auto;
+        }
+
+        &.-one {
+            bottom: 65%;
+            left: -30%;
+        }
+        
+        &.-two {
+            bottom: 50%;
+            left: -60%;
+        }
+    }
+}

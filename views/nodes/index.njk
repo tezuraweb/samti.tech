@@ -1,0 +1,47 @@
+{% set pageTitle = "Marketing & Development services" %}
+{% set pageDescription = "Professional web development, SMM marketing, targeting, SEO, design, and chatbot creation services to elevate your online presence and accelerate business growth." %}
+{% set pageKeywords = "Web development, SMM marketing, Targeting, SEO services, Design, Chatbot creation, Digital marketing, Online presence, Business growth, Web services, Social media marketing, Search engine optimization, Graphic design, Chatbot development, Marketing solutions" %}
+
+{% extends "layouts/main.njk" %}
+
+{% block mainContent %}
+
+    <div id="root"></div>
+
+    <section class="section reminder" id="reminder">
+        <div class="container container__base">
+            <h2 class="section__title">
+                <div class="section__title--text">Client reminder</div>
+            </h2>
+        </div>
+        <div class="container container__medium">
+            <ul class="reminder__list">
+                <li class="reminder__item">
+                    <div class="reminder__card">
+                        1. After placing an order, you will receive a contract and payment details sent to the provided contact information. The order will be processed only after receiving the advance payment. You can review the terms of the offer contract <a href="" class="reminder__link">here</a>
+                    </div>
+                </li>
+                <li class="reminder__item">
+                    <div class="reminder__card">
+                        2. The order is executed within the agreed-upon timeframe. Any extension of the deadlines by either party may be considered separately and documented in an attachment to the contract
+                    </div>
+                </li>
+                <li class="reminder__item">
+                    <div class="reminder__card">
+                        3. For any orders, a post-service support option is available. Details can be found <a href="" class="reminder__link">here</a>
+                    </div>
+                </li>
+                <li class="reminder__item">
+                    <div class="reminder__card reminder__card--final">
+                        <span class="reminder__card--text">That's it.<br>Let’s<br>collaborate!</span>
+                        <div class="reminder__cat">
+                            {% set includeIcon = 'cat' %}
+                            {% include 'includes/svg.njk' %}
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+{% endblock %}

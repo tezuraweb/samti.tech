@@ -1,0 +1,141 @@
+.reminder {
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -45px;
+    }
+
+    &__item {
+        padding: 20px 45px;
+        flex-basis: 50%;
+        min-height: 318px;
+    }
+
+    &__card {
+        position: relative;
+        padding: 40px;
+        border-radius: 20px;
+        background-color: $grey;
+        font-size: 30px;
+        color: black;
+        height: 100%;
+
+        &--text {
+            position: relative;
+            font-family: "Trispace";
+            font-size: 40px;
+            line-height: 1.1;
+            font-weight: 600;
+            color: $white;
+
+            &::before {
+                content: '//';
+                position: absolute;
+                left: -60px;
+            }
+        }
+
+        &--final {
+            background: linear-gradient(128deg, rgba(114, 61, 159, 1) 0%, rgba(102, 49, 144, 1) 35%, rgba(111, 54, 156, 1) 61%, rgba(40, 24, 62, 1) 100%);
+            padding: 55px 100px;
+        }
+    }
+
+    &__cat {
+        position: absolute;
+        right: 100px;
+        bottom: -15px;
+    }
+
+    &__link {
+        text-decoration: underline;
+    }
+
+    @media (max-width: $desktop-breakpoint) {
+        &__cat {
+            right: 30px;
+        }
+    }
+
+    @media (max-width: $laptop-breakpoint-1) {
+        &__item {
+            min-height: 300px;
+        }
+
+        &__card {
+            font-size: 25px;
+
+            &--final {
+                padding: 55px 80px;
+            }
+
+            &--text {
+                font-size: 35px;
+
+                &::before {
+                    left: -50px;
+                }
+            }
+        }
+
+        &__cat {
+            right: -30px;
+        }
+    }
+
+    @media (max-width: $laptop-breakpoint-2) {
+        &__item {
+            flex-basis: 100%;
+            min-height: 230px;
+        }
+
+        &__cat {
+            right: -20px;
+            bottom: -30px;
+        }
+    }
+
+    @media (max-width: $tablet-breakpoint-1) {
+        &__item {
+            min-height: 105px;
+            padding: 10px 45px;
+        }
+
+        &__card {
+            font-size: 16px;
+            padding: 12px 43px 12px 18px;
+
+            &--final {
+                padding: 12px 43px 12px 50px;
+            }
+
+            &--text {
+                font-size: 22px;
+
+                &::before {
+                    left: -31px;
+                }
+            }
+        }
+
+        &__cat {
+            display: none;
+        }
+    }
+
+    @media (max-width: $mobile-breakpoint) {
+        &__list {
+            margin: 0;
+        }
+
+        &__item {
+            padding: 10px 0;
+        }
+
+        &__card {
+            &--text {
+                font-size: 20px;
+            }
+        }
+    }
+}
