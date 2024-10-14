@@ -26,21 +26,21 @@ router
     });
 
 router
-    .route('/design')
+    .route('/thesouth')
     .get((req, res) => {
-        res.render('nodes/portfolio', { language: 'en', pageType: 'design' });
+        res.render('nodes/portfolio', { language: 'en', pageType: 'thesouth' });
     });
 
 router
-    .route('/apps')
+    .route('/rimera')
     .get((req, res) => {
-        res.render('nodes/portfolio', { language: 'en', pageType: 'apps' });
+        res.render('nodes/portfolio', { language: 'en', pageType: 'rimera' });
     });
 
 router
-    .route('/smm')
+    .route('/zippy')
     .get((req, res) => {
-        res.render('nodes/portfolio', { language: 'en', pageType: 'smm' });
+        res.render('nodes/portfolio', { language: 'en', pageType: 'zippy' });
     });
 
 module.exports = router;

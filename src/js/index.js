@@ -6,17 +6,22 @@ import store, { persistor } from './redux/store';
 import App from './app';
 
 document.addEventListener('DOMContentLoaded', () => {
-    ReactDOM.render(
-        <Provider store={store}>
-            <PersistGate loading={null} persistor={persistor}>
-                <App />
-            </PersistGate>
-        </Provider>,
-        document.getElementById('root')
-    );
+    const root = document.getElementById('root');
+    
+    if (root) {
+        ReactDOM.render(
+            <Provider store={store}>
+                <PersistGate loading={null} persistor={persistor}>
+                    <App />
+                </PersistGate>
+            </Provider>,
+            root
+        );
+    }
 
     const scrollToTopButton = document.querySelector('.footer__button');
     const scrollToProjectsButton = document.querySelector('#startProjectButton');
+    const returnToMainButton = document.querySelector('.portfolio__button');
 
     if (scrollToTopButton) {
         scrollToTopButton.addEventListener('click', () => {
@@ -33,6 +38,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 top: window.innerHeight,
                 behavior: 'smooth'
             });
+        });
+    }
+
+    if (returnToMainButton) {
+        returnToMainButton.addEventListener('click', () => {
+            window.location.href = '/';
         });
     }
 });

@@ -10,7 +10,8 @@
         background-clip: text;
         -webkit-text-stroke: 5px transparent;
         width: fit-content;
-        margin-right: 30px;
+        padding-top: 100px;
+        margin-bottom: 100px;
     }
 
     &__description {
@@ -42,17 +43,35 @@
 
         &--wrapper {
             display: flex;
-            align-items: baseline;
+            align-items: center;
+            margin-bottom: 145px;
+        }
+
+        &--version {
+            margin-bottom: 145px;
         }
     }
 
     &__icons {
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
         flex-basis: 40%;
+        gap: 50px;
 
         &--services__icons {
             height: 60px;
+            width: 60px;
+            justify-self: center;
+            align-self: center;
+
+            &:nth-child(1) {
+                width: 100%;
+                grid-column: 1 / -1;
+            }
+        }
+
+        &--column {
+            grid-template-columns: repeat(1, 1fr);
         }
     }
 
@@ -76,5 +95,60 @@
             left: 0;
             z-index: 0;
         }
+    }
+
+    &__button {
+        width: 120px;
+        height: 120px;
+        margin-right: auto;
+        opacity: .5;
+        transition: opacity .3s;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            display: block;
+            width: 14px;
+            height: 14px;
+            border-top: 2px solid #cfcfcf;
+            border-right: 2px solid #cfcfcf;
+            -webkit-transform: translate(-8px, -5px) rotate(-45deg);
+            transform: translate(-8px, -5px) rotate(-135deg);
+            transition: border .3s;
+        }
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    &__images {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        &--decorative {
+            position: absolute;
+
+            &--top {
+                width: 600px;
+                top: -650px;
+                right: 0;
+            }
+
+            &--middle {
+                z-index: 2;
+            }
+        }
+    }
+
+    &__images img {
+        flex: 0 0 48%;
+        max-width: 100%;
+        height: auto;
+        display: block;
     }
 }

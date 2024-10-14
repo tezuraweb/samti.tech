@@ -6,7 +6,7 @@ const Projects = ({ currentLang, callForm }) => {
     const projects = [
         {
             id: 'webdev',
-            link: '',
+            link: '/web-development',
             title: localization[currentLang].proj1Title,
             summary: localization[currentLang].proj1Desc,
             cover: '/img/main/meditary.webp',
@@ -14,7 +14,7 @@ const Projects = ({ currentLang, callForm }) => {
         },
         {
             id: 'design',
-            link: '',
+            link: '/thesouth',
             title: localization[currentLang].proj2Title,
             summary: localization[currentLang].proj2Desc,
             cover: '/img/main/realestate.webp',
@@ -22,7 +22,7 @@ const Projects = ({ currentLang, callForm }) => {
         },
         {
             id: 'interface',
-            link: '',
+            link: '/rimera',
             title: localization[currentLang].proj3Title,
             summary: localization[currentLang].proj3Desc,
             cover: '/img/main/rimera.webp',
@@ -30,7 +30,7 @@ const Projects = ({ currentLang, callForm }) => {
         },
         {
             id: 'smm',
-            link: '',
+            link: '/zippy',
             title: localization[currentLang].proj4Title,
             summary: localization[currentLang].proj4Desc,
             cover: '/img/main/cards.webp',

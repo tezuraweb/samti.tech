@@ -7,15 +7,15 @@
     {% set pageTitle = 'Web-development & design' %}
     {% set pageDescription = 'Expert web development services crafting responsive and user-friendly websites to engage your audience and drive success.' %}
     {% set keywords = 'Web development, Responsive websites, User-friendly design, Website development, Custom websites, Front-end development, Back-end development, Web application development, Professional web developers, Custom coding' %}
-{% elif pageType == 'design' %}
+{% elif pageType == 'thesouth' %}
     {% set pageTitle = 'Design' %}
     {% set pageDescription = 'Creative design services offering innovative and visually appealing graphics, branding, and UI/UX solutions to make your brand stand out.' %}
     {% set keywords = 'Design services, Graphic design, Branding, UI/UX design, Visual design, Creative design, Logo design, Brand identity, User interface design, User experience' %}
-{% elif pageType == 'apps' %}
+{% elif pageType == 'rimera' %}
     {% set pageTitle = 'Mobile Apps and Chatbots' %}
     {% set pageDescription = 'Develop custom mobile apps and chatbots, including web apps and Telegram bots, to meet all your business needs.' %}
     {% set keywords = 'Mobile app development, Chatbot creation, Web applications, Telegram bots, Internal correspondence management, Custom mobile apps, Business communication solutions, Chatbot development, Organizational tools, Custom software development, Mobile applications, Business automation, Communication platforms, AI chatbots, Custom app solutions' %}
-{% elif pageType == 'smm' %}
+{% elif pageType == 'zippy' %}
     {% set pageTitle = 'SMM and Targeting' %}
     {% set pageDescription = 'Boost your brand’s online visibility with our strategic SMM marketing services tailored to effectively engage your target audience.' %}
     {% set keywords = 'SMM marketing, Social media marketing, Online visibility, Brand awareness, Audience engagement, Social media strategy, Digital marketing, Marketing campaigns, Social media advertising, Content creation' %}
@@ -28,25 +28,22 @@
         ps: 'PhotoshopIcon',
         figma: 'FigmaIcon'
     } %}
-{% elif pageType == 'design' %}
+{% elif pageType == 'thesouth' %}
     {% set icons = {
         node: 'NodeIcon',
         react: 'ReactIcon',
-        ps: 'PhotoshopIcon',
         figma: 'FigmaIcon'
     } %}
-{% elif pageType == 'apps' %}
+{% elif pageType == 'rimera' %}
     {% set icons = {
         node: 'NodeIcon',
-        react: 'ReactIcon',
-        ps: 'PhotoshopIcon',
+        ps: 'PostgresqlIcon',
         figma: 'FigmaIcon'
     } %}
-{% elif pageType == 'smm' %}
+{% elif pageType == 'zippy' %}
     {% set icons = {
         node: 'NodeIcon',
-        react: 'ReactIcon',
-        ps: 'PhotoshopIcon',
+        flutter: 'FlutterIcon',
         figma: 'FigmaIcon'
     } %}
 {% endif %}
@@ -54,34 +51,122 @@
 {% extends "layouts/portfolio.njk" %}
 
 {% block mainContent %}
-    <div class="container container__medium">
-        <h1 class="portfolio__title">{{ pageTitle }}</h1>
-        <div class="portfolio__description--wrapper">
-            <p class="portfolio__description">
-                Design of a multi-page website in light, airy tones. Developed using Node.js.
-                Сreation of a Telegram bot and its integration for processing form data and notifying the manager about new inquiries.
-            </p>
-            <div class="portfolio__icons">
-                <svg class="portfolio__icons--services__icons">
-                    <use xlink:href="#{{ icons.node }}"></use>
-                </svg>
-                <svg class="portfolio__icons--services__icons">
-                    <use xlink:href="#{{ icons.react }}"></use>
-                </svg>
-                <svg class="portfolio__icons--services__icons">
-                    <use xlink:href="#{{ icons.ps }}"></use>
-                </svg>
-                <svg class="portfolio__icons--services__icons">
-                    <use xlink:href="#{{ icons.figma }}"></use>
-                </svg>
+    <button class="button portfolio__button"></button>
+    {% if pageType == 'web-development' %}
+        <div class="container container__medium">
+            <h1 class="portfolio__title">{{ pageTitle }}</h1>
+            <div class="portfolio__description--wrapper">
+                <div class="portfolio__description">
+                    Design of a multi-page website in calming, soothing tones for selling online meditation courses. Developed using Node.js. Provided short recordings of daily practices to help users select programs tailored to their needs. Enabled users to choose multiple courses and send requests directly to the administrator. Created and integrated a Telegram bot to process form data and notify the admin of new inquiries.
+                </div>
+                <div class="portfolio__icons">
+                    <svg class="portfolio__icons--services__icons">
+                        <use xlink:href="#{{ icons.node }}"></use>
+                    </svg>
+                    <svg class="portfolio__icons--services__icons">
+                        <use xlink:href="#{{ icons.react }}"></use>
+                    </svg>
+                    <svg class="portfolio__icons--services__icons">
+                        <use xlink:href="#{{ icons.ps }}"></use>
+                    </svg>
+                    <svg class="portfolio__icons--services__icons">
+                        <use xlink:href="#{{ icons.figma }}"></use>
+                    </svg>
+                </div>
+            </div>
+            <img src="/img/portfolio/meditary_cover.webp" alt="Meditary portfolio cover">
+            <h2 class="section__title">
+                <div class="section__title--text">Full view</div>
+            </h2>
+            <div class="portfolio__description portfolio__description--version">On desktop version of the website</div>
+            <img src="/img/portfolio/meditary_portfolio.webp" alt="Meditary portfolio">
+        </div>
+    {% elif pageType == 'thesouth' %}
+        <div class="container container__medium">
+            <h1 class="portfolio__title">{{ pageTitle }}</h1>
+            <div class="portfolio__description--wrapper">
+                <p class="portfolio__description">
+                    This project, built with Node.js and React, delivers a seamless experience for both owners and tenants. It features a dynamic real estate website for users to browse properties and a tenant profile system for personalized access. Additionally, the system integrates with a Telegram bot, streamlining management by handling tenant complaints and providing real-time reports on rent statuses.
+                </p>
+                <div class="portfolio__icons portfolio__icons--column">
+                    <svg class="portfolio__icons--services__icons">
+                        <use xlink:href="#{{ icons.node }}"></use>
+                    </svg>
+                    <svg class="portfolio__icons--services__icons">
+                        <use xlink:href="#{{ icons.react }}"></use>
+                    </svg>
+                    <svg class="portfolio__icons--services__icons">
+                        <use xlink:href="#{{ icons.figma }}"></use>
+                    </svg>
+                </div>
+            </div>
+            <img src="/img/portfolio/thesouth_cover.webp" alt="TheSouth portfolio cover">
+            <h2 class="section__title">
+                <div class="section__title--text">Two pages' view</div>
+            </h2>
+            <div class="portfolio__description portfolio__description--version">On desktop version of the website</div>
+            <div class="portfolio__images">
+                <img src="/img/portfolio/thesouth_portfolio1.webp" alt="TheSouth portfolio">
+                <img src="/img/portfolio/thesouth_portfolio2.webp" alt="TheSouth portfolio">
             </div>
         </div>
-        <img src="/img/portfolio/meditary_cover.webp" alt="Meditary portfolio cover">
-        <h2 class="section__title">
-            <div class="section__title--text">Full view</div>
-        </h2>
-        <div class="portfolio__description">On desktop version of the website</div>
-        <img src="/img/portfolio/meditary_portfolio.webp" alt="Meditary portfolio">
-        <a href="/"></a>
-    </div>
+    {% elif pageType == 'rimera' %}
+    <div class="container container__medium">
+            <h1 class="portfolio__title">{{ pageTitle }}</h1>
+            <div class="portfolio__description--wrapper">
+                <p class="portfolio__description">
+                    Development of a Telegram bot for corporate communication needs, including integration with the internal CRM system. Design of the Telegram bot's administrator panel interface, and creation and configuration of corporate content within the bot.
+                </p>
+                <div class="portfolio__icons portfolio__icons--column">
+                    <svg class="portfolio__icons--services__icons">
+                        <use xlink:href="#{{ icons.node }}"></use>
+                    </svg>
+                    <svg class="portfolio__icons--services__icons">
+                        <use xlink:href="#{{ icons.ps }}"></use>
+                    </svg>
+                    <svg class="portfolio__icons--services__icons">
+                        <use xlink:href="#{{ icons.figma }}"></use>
+                    </svg>
+                </div>
+            </div>
+            <img src="/img/portfolio/tg_cover.webp" alt="Telegram Rimera portfolio cover">
+            <h2 class="section__title">
+                <div class="section__title--text">Admin panel view</div>
+            </h2>
+            <div class="portfolio__description portfolio__description--version">On desktop version of the website</div>
+            <div class="portfolio__images">
+                <img class="portfolio__images--decorative portfolio__images--decorative--top" src="/img/portfolio/max_top_tg.webp" alt="Rimera portfolio">
+                <img class="portfolio__images--decorative--middle" src="/img/portfolio/tg_portfolio.webp" alt="Rimera portfolio">
+            </div>
+        </div>
+    {% elif pageType == 'zippy' %}
+    <div class="container container__medium">
+            <h1 class="portfolio__title">{{ pageTitle }}</h1>
+            <div class="portfolio__description--wrapper">
+                <p class="portfolio__description">
+                    Development of a Telegram bot for corporate communication needs, including integration with the internal CRM system. Design of the Telegram bot's administrator panel interface, and creation and configuration of corporate content within the bot.
+                </p>
+                <div class="portfolio__icons portfolio__icons--column">
+                    <svg class="portfolio__icons--services__icons">
+                        <use xlink:href="#{{ icons.node }}"></use>
+                    </svg>
+                    <svg class="portfolio__icons--services__icons">
+                        <use xlink:href="#{{ icons.flutter }}"></use>
+                    </svg>
+                    <svg class="portfolio__icons--services__icons">
+                        <use xlink:href="#{{ icons.figma }}"></use>
+                    </svg>
+                </div>
+            </div>
+            <img src="/img/portfolio/zippy_cover.webp" alt="Zippy wallet portfolio cover">
+            <h2 class="section__title">
+                <div class="section__title--text">Admin panel view</div>
+            </h2>
+            <div class="portfolio__description">On desktop version of the website</div>
+            <div class="portfolio__images">
+                <img src="/img/portfolio/zippy_themes.webp" alt="Zippy portfolio">
+                <img src="/img/portfolio/zippy_screens.webp" alt="Zippy portfolio">
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}
