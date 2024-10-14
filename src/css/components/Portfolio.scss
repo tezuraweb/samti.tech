@@ -1,0 +1,79 @@
+.portfolio {
+    &__title {
+        font-family: 'Trispace';
+        font-size: 80px;
+        line-height: 1.1;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        background: radial-gradient(107.84% 411.42% at 50% 52%, #FF008A 0%, #980089 8.65%, #000 59.38%, #005E92 83.85%);
+        background-clip: text;
+        -webkit-text-stroke: 5px transparent;
+        width: fit-content;
+        margin-right: 30px;
+    }
+
+    &__description {
+        flex-basis: 60%;
+        position: relative;
+        padding: 30px 35px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 22px;
+        line-height: 1.1;
+
+        &::before,
+        &::after {
+            display: block;
+            position: absolute;
+            left: 0;
+            font-weight: 600;
+        }
+
+        &::before {
+            content: "<p>";
+            top: 0;
+        }
+
+        &::after {
+            content: "</p>";
+            bottom: 0;
+        }
+
+        &--wrapper {
+            display: flex;
+        }
+    }
+
+    &__icons {
+        display: flex;
+        flex-wrap: wrap;
+        flex-basis: 40%;
+
+        &--services__icons {
+            height: 60px;
+        }
+    }
+
+    &__inner-heading {
+        position: relative;
+        margin: 55px auto;
+        font-size: 64px;
+        font-weight: 400;
+
+        &::before {
+            content: "// ";
+        }
+
+        &::after {
+            content: "";
+            width: 100%;
+            height: 25px;
+            background-color: #48276e;
+            position: absolute;
+            bottom: -7px;
+            left: 0;
+            z-index: 0;
+        }
+    }
+}

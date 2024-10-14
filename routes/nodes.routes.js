@@ -19,4 +19,28 @@ router
         res.render('nodes/index', { language: 'ru' });
     });
 
+    router
+    .route('/meditary')
+    .get((req, res) => {
+        res.render('includes/portfolio1', { language: 'ru' });
+    });
+
+router
+    .route('/thesouth')
+    .get((req, res) => {
+        res.render('includes/portfolio2', { language: 'ru' });
+    });
+
+router
+    .route('/rimera')
+    .get((req, res) => {
+        res.render('includes/portfolio3', { language: 'ru' });
+    });
+
+router
+    .route('/smm')
+    .get((req, res) => {
+        res.render('includes/portfolio4', { language: 'ru' });
+    });
+
 module.exports = router;
