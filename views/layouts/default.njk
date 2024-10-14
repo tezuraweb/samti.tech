@@ -4,8 +4,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{{ pageTitle }}</title>
-        <meta name="title" content="{{ pageTitle|default('Marketing &amp; Development services') }}">
+        <title>{{ pageTitle|default('Marketing &amp; Development services') ~ ' — Samti.tech' }}</title>
+        <meta name="title" content="{{ pageTitle|default('Marketing &amp; Development services') ~ ' — Samti.tech'}}">
         <meta name="description" content="{{ pageDescription|default('Professional web development, SMM marketing, targeting, SEO, design, and chatbot creation services to elevate your online presence and accelerate business growth.') }}">
         <meta name="keywords" content="{{ pageKeywords|default('Web development, SMM marketing, Targeting, SEO services, Design, Chatbot creation, Digital marketing, Online presence, Business growth, Web services, Social media marketing, Search engine optimization, Graphic design, Chatbot development, Marketing solutions') }}">
         <meta name="robots" content="index, follow">

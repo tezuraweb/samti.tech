@@ -1,0 +1,17 @@
+{% set hideFooterLinks = true %}
+
+{% extends "layouts/default.njk" %}
+
+{% block bodyContent %}
+
+    <main class="mainpage">
+        {% block mainContent %}{% endblock %}
+    </main>
+
+    {% include "includes/footer.njk" %}
+    {% include "includes/svgSprite.njk" %}
+
+{% endblock %}
+
+{% block customJs %}
+{% endblock %}

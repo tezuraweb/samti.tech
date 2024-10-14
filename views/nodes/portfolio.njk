@@ -1,0 +1,87 @@
+{% set pageTitle = null %}
+{% set pageDescription = null %}
+{% set keywords = null %}
+{% set icons = {} %}
+
+{% if pageType == 'web-development' %}
+    {% set pageTitle = 'Web-development & design' %}
+    {% set pageDescription = 'Expert web development services crafting responsive and user-friendly websites to engage your audience and drive success.' %}
+    {% set keywords = 'Web development, Responsive websites, User-friendly design, Website development, Custom websites, Front-end development, Back-end development, Web application development, Professional web developers, Custom coding' %}
+{% elif pageType == 'design' %}
+    {% set pageTitle = 'Design' %}
+    {% set pageDescription = 'Creative design services offering innovative and visually appealing graphics, branding, and UI/UX solutions to make your brand stand out.' %}
+    {% set keywords = 'Design services, Graphic design, Branding, UI/UX design, Visual design, Creative design, Logo design, Brand identity, User interface design, User experience' %}
+{% elif pageType == 'apps' %}
+    {% set pageTitle = 'Mobile Apps and Chatbots' %}
+    {% set pageDescription = 'Develop custom mobile apps and chatbots, including web apps and Telegram bots, to meet all your business needs.' %}
+    {% set keywords = 'Mobile app development, Chatbot creation, Web applications, Telegram bots, Internal correspondence management, Custom mobile apps, Business communication solutions, Chatbot development, Organizational tools, Custom software development, Mobile applications, Business automation, Communication platforms, AI chatbots, Custom app solutions' %}
+{% elif pageType == 'smm' %}
+    {% set pageTitle = 'SMM and Targeting' %}
+    {% set pageDescription = 'Boost your brand’s online visibility with our strategic SMM marketing services tailored to effectively engage your target audience.' %}
+    {% set keywords = 'SMM marketing, Social media marketing, Online visibility, Brand awareness, Audience engagement, Social media strategy, Digital marketing, Marketing campaigns, Social media advertising, Content creation' %}
+{% endif %}
+
+{% if pageType == 'web-development' %}
+    {% set icons = {
+        node: 'NodeIcon',
+        react: 'ReactIcon',
+        ps: 'PhotoshopIcon',
+        figma: 'FigmaIcon'
+    } %}
+{% elif pageType == 'design' %}
+    {% set icons = {
+        node: 'NodeIcon',
+        react: 'ReactIcon',
+        ps: 'PhotoshopIcon',
+        figma: 'FigmaIcon'
+    } %}
+{% elif pageType == 'apps' %}
+    {% set icons = {
+        node: 'NodeIcon',
+        react: 'ReactIcon',
+        ps: 'PhotoshopIcon',
+        figma: 'FigmaIcon'
+    } %}
+{% elif pageType == 'smm' %}
+    {% set icons = {
+        node: 'NodeIcon',
+        react: 'ReactIcon',
+        ps: 'PhotoshopIcon',
+        figma: 'FigmaIcon'
+    } %}
+{% endif %}
+
+{% extends "layouts/portfolio.njk" %}
+
+{% block mainContent %}
+    <div class="container container__medium">
+        <h1 class="portfolio__title">{{ pageTitle }}</h1>
+        <div class="portfolio__description--wrapper">
+            <p class="portfolio__description">
+                Design of a multi-page website in light, airy tones. Developed using Node.js.
+                Сreation of a Telegram bot and its integration for processing form data and notifying the manager about new inquiries.
+            </p>
+            <div class="portfolio__icons">
+                <svg class="portfolio__icons--services__icons">
+                    <use xlink:href="#{{ icons.node }}"></use>
+                </svg>
+                <svg class="portfolio__icons--services__icons">
+                    <use xlink:href="#{{ icons.react }}"></use>
+                </svg>
+                <svg class="portfolio__icons--services__icons">
+                    <use xlink:href="#{{ icons.ps }}"></use>
+                </svg>
+                <svg class="portfolio__icons--services__icons">
+                    <use xlink:href="#{{ icons.figma }}"></use>
+                </svg>
+            </div>
+        </div>
+        <img src="/img/portfolio/meditary_cover.webp" alt="Meditary portfolio cover">
+        <h2 class="section__title">
+            <div class="section__title--text">Full view</div>
+        </h2>
+        <div class="portfolio__description">On desktop version of the website</div>
+        <img src="/img/portfolio/meditary_portfolio.webp" alt="Meditary portfolio">
+        <a href="/"></a>
+    </div>
+{% endblock %}

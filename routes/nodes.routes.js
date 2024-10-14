@@ -20,27 +20,27 @@ router
     });
 
     router
-    .route('/meditary')
+    .route('/web-development')
     .get((req, res) => {
-        res.render('includes/portfolio1', { language: 'ru' });
+        res.render('nodes/portfolio', { language: 'en', pageType: 'web-development' });
     });
 
 router
-    .route('/thesouth')
+    .route('/design')
     .get((req, res) => {
-        res.render('includes/portfolio2', { language: 'ru' });
+        res.render('nodes/portfolio', { language: 'en', pageType: 'design' });
     });
 
 router
-    .route('/rimera')
+    .route('/apps')
     .get((req, res) => {
-        res.render('includes/portfolio3', { language: 'ru' });
+        res.render('nodes/portfolio', { language: 'en', pageType: 'apps' });
     });
 
 router
     .route('/smm')
     .get((req, res) => {
-        res.render('includes/portfolio4', { language: 'ru' });
+        res.render('nodes/portfolio', { language: 'en', pageType: 'smm' });
     });
 
 module.exports = router;
