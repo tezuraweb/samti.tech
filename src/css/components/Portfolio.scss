@@ -16,6 +16,7 @@
 
     &__description {
         flex-basis: 60%;
+        max-width: 900px;
         position: relative;
         padding: 30px 35px;
         font-style: normal;
@@ -64,7 +65,7 @@
             justify-self: center;
             align-self: center;
 
-            &:nth-child(1) {
+            &--long {
                 width: 100%;
                 grid-column: 1 / -1;
             }
@@ -127,8 +128,12 @@
     &__images {
         position: relative;
         display: flex;
-        flex-wrap: wrap;
         justify-content: space-between;
+        flex-wrap: nowrap;
+
+        &--flexible {
+            max-width: calc(50% - 20px);
+        }
 
         &--decorative {
             position: absolute;
@@ -146,9 +151,7 @@
     }
 
     &__images img {
-        flex: 0 0 48%;
-        max-width: 100%;
+        flex: 1 1 auto;
         height: auto;
-        display: block;
     }
 }

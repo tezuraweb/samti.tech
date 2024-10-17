@@ -33,7 +33,7 @@ const Projects = ({ currentLang, callForm }) => {
             link: '/zippy',
             title: localization[currentLang].proj4Title,
             summary: localization[currentLang].proj4Desc,
-            cover: '/img/main/cards.webp',
+            cover: '/img/main/zippy.webp',
             width: '330'
         }
     ];
