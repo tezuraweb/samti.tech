@@ -24,3 +24,18 @@
         url('../../assets/fonts/Sansation-Light-webfont.woff2') format('woff2'),
         url('../../assets/fonts/Sansation-Light-webfont.woff') format('woff');
 }
+
+@font-face {
+    font-family: 'Radiotechnika';
+    src: local(''),
+        url('../../assets/fonts/Play-Regular.woff2') format('woff2'),
+        url('../../assets/fonts/Play-Regular.woff') format('woff');
+    unicode-range: U+0400-04FF;
+}
+
+@font-face {
+    font-family: 'Radiotechnika-special';
+    src: local(''),
+        url('../../assets/fonts/Play-Regular.woff2') format('woff2'),
+        url('../../assets/fonts/Play-Regular.woff') format('woff');
+}

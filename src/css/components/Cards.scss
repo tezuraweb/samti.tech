@@ -60,11 +60,15 @@
     }
 
     &__title {
-        font-family: 'Trispace';
+        font-family: 'Radiotechnika', 'Trispace';
         font-size: 64px;
         line-height: 1;
         font-weight: 100;
         margin-bottom: auto;
+
+        &--foreignRuTj {
+            font-family: 'Radiotechnika-special';
+        }
 
         &::before {
             content: '// ';

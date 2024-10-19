@@ -10,7 +10,7 @@
 
     &__button {
         position: relative;
-        font-family: 'Trispace';
+        font-family: 'Radiotechnika', 'Trispace';
         padding: 100px 40px;
         background-color: $blue3;
         transition: background-color .3s;
@@ -33,7 +33,7 @@
     }
 
     &__title {
-        font-family: 'Trispace';
+        font-family: 'Radiotechnika', 'Trispace';
         font-size: 64px;
         line-height: 1;
         font-weight: 600;
@@ -41,6 +41,10 @@
         max-width: 770px;
         position: relative;
         z-index: auto;
+
+        &--foreignRuTj {
+            font-family: 'Radiotechnika-special';
+        }
 
         &--text {
             position: relative;
@@ -171,7 +175,7 @@
     }
 
     &__item {
-        font-family: 'Trispace';
+        font-family: 'Radiotechnika', 'Trispace';
         font-size: 40px;
         font-weight: 100;
         padding: 0 0 15px 260px;
@@ -181,6 +185,10 @@
         color: $grey;
         transition: font-weight .3s;
         cursor: pointer;
+
+        &--foreignRuTj {
+            font-family: 'Radiotechnika-special';
+        }
 
         &.active {
             font-weight: 600;

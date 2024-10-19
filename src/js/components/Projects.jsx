@@ -62,7 +62,7 @@ const Projects = ({ currentLang, callForm }) => {
                                     </a>
                                 </div>
                                 <div className="cards__text">
-                                    <div className="cards__title">{project.title}</div>
+                                    <div className={`cards__title ${currentLang === 'ru' || currentLang === 'tj' ? 'cards__title--foreignRuTj' : ''}`}>{project.title}</div>
                                     <div className="cards__summary">{project.summary}</div>
                                 </div>
                                 <a href={project.link} className="cards__button button" aria-label="Link to project"></a>

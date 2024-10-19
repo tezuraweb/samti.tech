@@ -6,7 +6,9 @@ import axios from 'axios';
 import IconSprite from '../includes/IconSprite';
 import localization from '../../../assets/json/localization.json';
 
-const LeadForm = ({ afterSubmit, currencies, currentLang, selectedCurrency }) => {
+const LeadForm = ({ afterSubmit }) => {
+    const currentLang = useSelector((state) => state.language?.currentLang || 'en');
+    const currentCurrency = useSelector((state) => state.currency?.currentCurrency || 'dollar');
     const services = [
         localization[currentLang].webdevTitle,
         localization[currentLang].smmTitle,
@@ -29,11 +31,11 @@ const LeadForm = ({ afterSubmit, currencies, currentLang, selectedCurrency }) =>
             '₽300000 - ₽1000000',
             '₽1000000+',
         ],
-        'yuan': [
-            '¥3000 - ¥8000',
-            '¥8000 - ¥20000',
-            '¥20000 - ¥50000',
-            '¥50000+',
+        'somoni': [
+            '4710 сомони - 12560 сомони',
+            '12560 сомони - 31400 сомони',
+            '31400 сомони - 78500 сомони',
+            '78500 сомони+',
         ],
     };
 
@@ -54,11 +56,6 @@ const LeadForm = ({ afterSubmit, currencies, currentLang, selectedCurrency }) =>
     const dispatch = useDispatch();
 
     const [visible, setVisible] = useState(false);
-    const [usedCurrency, setUsedCurrency] = useState('dollar');
-
-    useEffect(() => {
-        setUsedCurrency(currencies[selectedCurrency].name);
-    }, [selectedCurrency]);
 
     useEffect(() => {
         if (savedFormState) {
@@ -81,7 +78,7 @@ const LeadForm = ({ afterSubmit, currencies, currentLang, selectedCurrency }) =>
         const formDataSend = {
             ...formData,
             service: services[formData.service]
-        }
+        };
 
         axios.post('/api/lead', formDataSend, {
             headers: {
@@ -112,7 +109,7 @@ const LeadForm = ({ afterSubmit, currencies, currentLang, selectedCurrency }) =>
     };
 
     const popupClick = (e) => {
-        if (e.target != e.currentTarget) return;
+        if (e.target !== e.currentTarget) return;
         handleClose();
     };
 
@@ -140,7 +137,7 @@ const LeadForm = ({ afterSubmit, currencies, currentLang, selectedCurrency }) =>
             ...prevState,
             service: prevInd
         }));
-    }
+    };
 
     const handleNext = () => {
         const nextInd = (formData.service + 1) % services.length;
@@ -148,7 +145,7 @@ const LeadForm = ({ afterSubmit, currencies, currentLang, selectedCurrency }) =>
             ...prevState,
             service: nextInd
         }));
-    }
+    };
 
     return (
         <div className={`form__popup ${visible ? 'active' : ''}`} onClick={(e) => popupClick(e)}>
@@ -222,7 +219,6 @@ const LeadForm = ({ afterSubmit, currencies, currentLang, selectedCurrency }) =>
                                         <IconSprite selector="LineRoundIcon" width="30" height="30" />
                                     </div>
                                 </label>
-
                                 <label className="form__radio" htmlFor="formFb">
                                     <input
                                         className="form__radio--input"
@@ -252,7 +248,6 @@ const LeadForm = ({ afterSubmit, currencies, currentLang, selectedCurrency }) =>
                                         <IconSprite selector="WhatsappRoundIcon" width="30" height="30" />
                                     </div>
                                 </label>
-
                                 <label className="form__radio" htmlFor="formWechat">
                                     <input
                                         className="form__radio--input"
@@ -278,8 +273,8 @@ const LeadForm = ({ afterSubmit, currencies, currentLang, selectedCurrency }) =>
                                 value={formData.budget}
                                 onChange={handleInputChange}
                             >
-                                {budgets[usedCurrency].map((budget) => (
-                                    <option value={budget}>{budget}</option>
+                                {budgets[currentCurrency].map((budget) => (
+                                    <option key={budget} value={budget}>{budget}</option>
                                 ))}
                             </select>
                             <label className="form__label" htmlFor="formBudget">{localization[currentLang].formBudget}</label>

@@ -211,7 +211,7 @@ const Services = forwardRef(({ currentLang, callForm }, ref) => {
                         </button>
                         <div className="services__poster">
                             <div className="services__text">
-                                <div className="services__title" key={selectedService.type}>
+                                <div className={`services__title ${currentLang === 'ru' || currentLang === 'tj' ? 'services__title--foreignRuTj' : ''}`} key={selectedService.type}>
                                     <span className="services__title--text">{selectedService.title}</span>
                                 </div>
                                 <div className="services__summary">{selectedService.summary}</div>
@@ -230,7 +230,7 @@ const Services = forwardRef(({ currentLang, callForm }, ref) => {
                     <div className="services__footer" ref={servicesFooterRef}>
                         <ul className="services__list">
                             {services.map((service, index) => (
-                                <li key={index} className={"services__item" + (index == selectedIndex ? " active" : "")} onClick={() => handleSelectIndex(index)}>
+                                <li key={index} className={`services__item ${currentLang === 'ru' || currentLang === 'tj' ? 'services__item--foreignRuTj' : ''}` + (index == selectedIndex ? " active" : "")} onClick={() => handleSelectIndex(index)}>
                                     {service.title}
                                 </li>
                             ))}

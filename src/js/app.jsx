@@ -8,24 +8,16 @@ const LeadForm = lazy(() => import('./components/Form'));
 const Loading = () => <div>Loading...</div>;
 
 const App = () => {
-    const currencies = [
-        {
-            name: 'dollar',
-            symbol: '$',
-        },
-        {
-            name: 'ruble',
-            symbol: '₽',
-        },
-        {
-            name: 'yuan',
-            symbol: '¥',
-        },
-    ];
+    const currencies = {
+        dollar: { symbol: '$' },
+        ruble: { symbol: '₽' },
+        somoni: { symbol: 'сом' }
+    };
+
+    const supportedLangs = ['en', 'ru', 'tj'];
 
     const servicesRef = useRef(null);
     const [currentLang, setCurrentLang] = useState('en');
-    const [selectedCurrency, setSelectedCurrency] = useState(0);
     const [isFormVisible, setIsFormVisible] = useState(false);
 
     useEffect(() => {
@@ -52,10 +44,6 @@ const App = () => {
         servicesRef.current?.scrollIntoView({ behavior: 'smooth' });
     };
 
-    const changeCurrency = (index) => {
-        setSelectedCurrency(index);
-    };
-
     const openForm = () => {
         setIsFormVisible(true);
     }
@@ -63,11 +51,9 @@ const App = () => {
     return (
         <div>
             <Suspense fallback={<Loading />}>
-                <Hero 
-                    currentLang={currentLang} 
-                    selectedCurrency={selectedCurrency} 
-                    currencies={currencies} 
-                    changeCurrency={changeCurrency} 
+                <Hero
+                    currencies={currencies}
+                    supportedLangs={supportedLangs}
                     callForm={openForm} 
                     scrollToServices={scrollToServices} 
                 />
@@ -88,9 +74,6 @@ const App = () => {
             {isFormVisible && (
                 <Suspense fallback={<Loading />}>
                     <LeadForm 
-                        currencies={currencies} 
-                        currentLang={currentLang} 
-                        selectedCurrency={selectedCurrency} 
                         afterSubmit={() => setIsFormVisible(false)}
                     />
                 </Suspense>

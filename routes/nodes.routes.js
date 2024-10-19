@@ -19,7 +19,13 @@ router
         res.render('nodes/index', { language: 'ru' });
     });
 
-    router
+router
+    .route('/tj')
+    .get((req, res) => {
+        res.render('nodes/index', { language: 'tj' });
+    });
+
+router
     .route('/web-development')
     .get((req, res) => {
         res.render('nodes/portfolio', { language: 'en', pageType: 'web-development' });

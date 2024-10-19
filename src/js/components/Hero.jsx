@@ -1,15 +1,23 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { debounce } from "lodash";
+import { useSelector, useDispatch } from 'react-redux';
+import { setLanguage, setCurrency } from '../redux/actions/actions';
 
 import Sparkle from './Sparkle';
 import localization from '../../../assets/json/localization.json';
 
-const HeroSection = ({ scrollToServices, changeCurrency, currentLang, currencies, selectedCurrency, callForm }) => {
-    const langs = ['en', 'ru'];
+const HeroSection = ({ scrollToServices, currencies, callForm, supportedLangs }) => {
+    const dispatch = useDispatch();
+
+    const urlLang = window.location.pathname.startsWith('/') ? window.location.pathname.split('/')[1] : null;
+    const savedLang = useSelector((state) => state.language?.currentLang);
+
+    const currentLang = savedLang || (supportedLangs.includes(urlLang) ? urlLang : 'en');
+
+    const savedCurrency = useSelector((state) => state.currency?.currentCurrency);
+    const currentCurrency = savedCurrency || 'dollar';
 
     const [langListVisible, setLangListVisible] = useState(false);
     const [currencyListVisible, setCurrencyListVisible] = useState(false);
-    const [usedCurrency, setUsedCurrency] = useState(0);
     const [currentTime, setCurrentTime] = useState(new Date());
     const currencySelectRef = useRef(null);
     const langSelectRef = useRef(null);
@@ -22,6 +30,18 @@ const HeroSection = ({ scrollToServices, changeCurrency, currentLang, currencies
 
         return () => clearInterval(timer);
     }, []);
+
+    useEffect(() => {
+        if (currentLang !== savedLang) {
+            dispatch(setLanguage(currentLang));
+        }
+    }, [currentLang, savedLang, dispatch]);
+
+    useEffect(() => {
+        if (currentCurrency !== savedCurrency) {
+            dispatch(setCurrency(currentCurrency));
+        }
+    }, [currentCurrency, savedCurrency, dispatch]);
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -40,34 +60,13 @@ const HeroSection = ({ scrollToServices, changeCurrency, currentLang, currencies
         };
     }, []);
 
-    // useEffect(() => {
-    //     if (window.innerWidth <= 1024) {
-    //         const background = backgroundRef.current;
-
-    //         const returnToPosition = debounce(() => {
-    //             const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-    //             background.style.transform = `translateY(${currentScrollTop}px)`;
-    //         }, 100);
-
-    //         window.addEventListener('scroll', returnToPosition);
-
-    //         return () => {
-    //             window.removeEventListener('scroll', returnToPosition);
-    //         };
-    //     }
-    // }, []);
-
-    useEffect(() => {
-        setUsedCurrency(selectedCurrency);
-    }, [selectedCurrency]);
-
     const formatTime = (time) => {
         return currentLang === 'en' ?
             time.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }) :
-            time.toLocaleTimeString('ru-RU', { hour: 'numeric', minute: 'numeric', hour12: false });
+            currentLang === 'tj' ?
+                time.toLocaleTimeString('ru-RU', { hour: 'numeric', minute: 'numeric', hour12: false }) :
+                time.toLocaleTimeString(currentLang, { hour: 'numeric', minute: 'numeric', hour12: false });
     };
-
 
     const getGreeting = (currentLang, currentTime) => {
         const hour = currentTime.getHours();
@@ -94,14 +93,18 @@ const HeroSection = ({ scrollToServices, changeCurrency, currentLang, currencies
         setCurrencyListVisible(!currencyListVisible);
     };
 
+    const handleCurrencySelect = (currency) => {
+        setCurrencyListVisible(false);
+        dispatch(setCurrency(currency));
+    };
+
     const handleLangSelectClick = () => {
         setLangListVisible(!langListVisible);
     };
 
-
-    const handleCurrencySelect = (index) => {
-        setCurrencyListVisible(false);
-        changeCurrency(index);
+    const handleLanguageSelect = (lang) => {
+        setLangListVisible(!langListVisible);
+        dispatch(setLanguage(lang));
     };
 
     const openForm = () => {
@@ -134,18 +137,28 @@ const HeroSection = ({ scrollToServices, changeCurrency, currentLang, currencies
                         </button>
                         <div className="hero__select">
                             <div className="hero__select--block" ref={currencySelectRef}>
-                                <div className="hero__select--active" onClick={() => handleCurrencySelectClick()}>{currencies[usedCurrency].symbol}</div>
+                                <div className="hero__select--active" onClick={() => handleCurrencySelectClick()}>
+                                    {currencies[currentCurrency]?.symbol || 'N/A'}
+                                </div>
                                 <div className={'hero__select--list' + (currencyListVisible ? ' visible' : '')}>
-                                    {currencies.map((currency, index) => (
-                                        <div className={'hero__select--item' + (index == usedCurrency ? ' active' : '')} onClick={() => handleCurrencySelect(index)}>{currency.symbol}</div>
+                                    {Object.keys(currencies).map((currency) => (
+                                        <div
+                                            className={'hero__select--item' + (currency === currentCurrency ? ' active' : '')}
+                                            onClick={() => handleCurrencySelect(currency)}
+                                            key={currency}
+                                        >
+                                            {currencies[currency]?.symbol || 'N/A'}
+                                        </div>
                                     ))}
                                 </div>
                             </div>
                             <div className="hero__select--block" ref={langSelectRef}>
                                 <div className="hero__select--active" onClick={() => handleLangSelectClick()}>{currentLang}</div>
                                 <div className={'hero__select--list' + (langListVisible ? ' visible' : '')}>
-                                    {langs.map((lang) => (
-                                        <a className={'hero__select--item' + (lang == currentLang ? ' active' : '')} href={'/' + lang}>{lang}</a>
+                                    {supportedLangs.map((lang) => (
+                                        <div className={'hero__select--item' + (lang === currentLang ? ' active' : '')} onClick={() => handleLanguageSelect(lang)}>
+                                            {lang.toUpperCase()}
+                                        </div>
                                     ))}
                                 </div>
                             </div>
@@ -154,11 +167,6 @@ const HeroSection = ({ scrollToServices, changeCurrency, currentLang, currencies
                     <div className="hero__bottom">
                         <h1 className="hero__title">{localization[currentLang].title1}<br /><span className="hero__title--big">{localization[currentLang].title2}</span><br />{localization[currentLang].title3}</h1>
                         <div className="hero__links">
-                            {/* <div className="hero__nav">
-                                <div className="hero__nav--line"></div>
-                                <div className="hero__nav--line"></div>
-                                <div className="hero__nav--line"></div>
-                            </div> */}
                             <button className="hero__arrow" onClick={handleScrollDown} aria-label="Scroll to services">
                                 <div className="hero__arrow--line"></div>
                             </button>
