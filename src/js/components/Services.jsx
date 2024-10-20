@@ -1,9 +1,12 @@
 import React, { useState, useRef, useEffect, forwardRef } from 'react';
+import { useSelector } from 'react-redux';
 
 import IconSprite from '../includes/IconSprite';
 import localization from '../../../assets/json/localization.json';
 
-const Services = forwardRef(({ currentLang, callForm }, ref) => {
+const Services = forwardRef(({ callForm }, ref) => {
+    const currentLang = useSelector((state) => state.language?.currentLang || 'en');
+
     const services = [
         {
             type: 'webdev',

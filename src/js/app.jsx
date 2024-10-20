@@ -17,14 +17,7 @@ const App = () => {
     const supportedLangs = ['en', 'ru', 'tj'];
 
     const servicesRef = useRef(null);
-    const [currentLang, setCurrentLang] = useState('en');
     const [isFormVisible, setIsFormVisible] = useState(false);
-
-    useEffect(() => {
-        if (window.appSettings && window.appSettings.lang) {
-            setCurrentLang(window.appSettings.lang);
-        }
-    }, []);
 
     useEffect(() => {
         const body = document.body;
@@ -61,13 +54,11 @@ const App = () => {
             <Suspense fallback={<Loading />}>
                 <Services 
                     ref={servicesRef} 
-                    currentLang={currentLang} 
                     callForm={openForm} 
                 />
             </Suspense>
             <Suspense fallback={<Loading />}>
                 <Projects 
-                    currentLang={currentLang} 
                     callForm={openForm} 
                 />
             </Suspense>

@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import localization from '../../../assets/json/localization.json';
 
-const Projects = ({ currentLang, callForm }) => {
+const Projects = ({ callForm }) => {
+    const currentLang = useSelector((state) => state.language?.currentLang || 'en');
+    
     const projects = [
         {
             id: 'webdev',
