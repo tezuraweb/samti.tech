@@ -5034,7 +5034,7 @@
         "id": 145,
         "institution_name": "Государственное образовательное учреждение «Лицей профессиональный технический района Б. Гафуров»",
         "legal_address": "Район Б. Гафуров",
-        "city_id": "b-gaffurov-district",
+        "city_id": "gaffurov-district",
         "group_id": "leninabad-group",
         "region": "leninabad-region",
         "institution_type": "school",
