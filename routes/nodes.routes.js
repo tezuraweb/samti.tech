@@ -8,6 +8,12 @@ router
     });
 
 router
+    .route('/map')
+    .get((req, res) => {
+        res.render('nodes/map');
+    });
+
+router
     .route('/en')
     .get((req, res) => {
         res.render('nodes/index', { language: 'en' });
