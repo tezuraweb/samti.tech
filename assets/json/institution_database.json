@@ -1567,7 +1567,7 @@
         "id": 40,
         "institution_name": "Педагогический колледж г. Пенджикент",
         "legal_address": "г. Пенджикент, ул. Садии Шерози, 84",
-        "city_id": "pendzhikent",
+        "city_id": "panzhakent",
         "group_id": "leninabad-group",
         "region": "leninabad-region",
         "institution_type": "college",
@@ -1599,7 +1599,7 @@
         "id": 41,
         "institution_name": "Медицинский колледж г. Пенджикент",
         "legal_address": "г. Пенджикент, ул. Бехзод, 94",
-        "city_id": "pendzhikent",
+        "city_id": "panzhakent",
         "group_id": "leninabad-group",
         "region": "leninabad-region",
         "institution_type": "college",
@@ -2026,7 +2026,7 @@
         "id": 52,
         "institution_name": "Технологический инновационный колледж при Педагогическом институте города Пенджикент (негосударственный)",
         "legal_address": "г. Пенджикент, пр-т Рудаки",
-        "city_id": "pendzhikent",
+        "city_id": "panzhakent",
         "group_id": "leninabad-group",
         "region": "leninabad-region",
         "institution_type": "college",
@@ -3557,7 +3557,7 @@
         "legal_address": "г. Хорог, ул. Назаршоев, 67",
         "city_id": "horog",
         "group_id": "gorno-badahshan-group",
-        "region": "gorno-badahshan",
+        "region": "gorno-badahshan-region",
         "institution_type": "college",
         "administration": [
             {
@@ -4865,7 +4865,7 @@
         "id": 140,
         "institution_name": "Государственное образовательное учреждение «Лицей профессиональный технический города Пенджикент»",
         "legal_address": "г. Пенджикент",
-        "city_id": "pendzhikent",
+        "city_id": "panzhakent",
         "group_id": "leninabad-group",
         "region": "leninabad-region",
         "institution_type": "school",
@@ -5535,6 +5535,24 @@
                 "emails": [
                     "shdo78@mail.ru"
                 ]
+            }
+        ]
+    },
+    {
+        "id": 160,
+        "institution_name": "Филиал медико-социального колледжа города Левакант в городе Норак",
+        "legal_address": "Район Муминобод",
+        "city_id": "norak",
+        "group_id": "republic-group",
+        "region": "republic-region",
+        "institution_type": "college",
+        "administration": [
+            {
+                "name": null,
+                "position": "Директор",
+                "work_phones": [],
+                "mobile_phones": [],
+                "emails": []
             }
         ]
     }

@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import store, { persistor } from './redux/store';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import App from './app';
 
 document.addEventListener('DOMContentLoaded', () => {
