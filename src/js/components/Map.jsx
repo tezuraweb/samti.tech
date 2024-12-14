@@ -1,14 +1,21 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { useState, useEffect, useRef } from 'react';
+import { debounce } from "lodash";
+import axios from 'axios';
 
 const Map = () => {
-
+    const [searchQuery, setSearchQuery] = useState('');
     const [institutionsData, setInstitutionsData] = useState([]);
     const [hoveredRegion, setHoveredRegion] = useState(null);
     const [selectedRegion, setSelectedRegion] = useState(null);
     const [regionInstitutions, setRegionInstitutions] = useState([]);
     const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
     const [tooltipContent, setTooltipContent] = useState('');
+
+    const debouncedSearch = useRef(
+        debounce((query) => {
+            setSearchQuery(query);
+        }, 500)
+    ).current;
 
     useEffect(() => {
         fetch('/api/institutions')
@@ -24,6 +31,26 @@ const Map = () => {
             })
             .catch(error => console.error('Error fetching data:', error));
     }, []);
+
+    useEffect(() => {
+        axios.post('/api/institutions/search', {
+            value: searchQuery,
+        })
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    }, [searchQuery]);
+
+    useEffect(() => {
+        return () => {
+            debouncedSearch.cancel();
+        };
+    }, [debouncedSearch]);
+
+    const handleInput = async (e) => {
+        debouncedSearch(e.target.value);
+    };
 
     const handleRegionHover = (event, regionOrCityId, name) => {
         let institutionsInArea;
@@ -191,6 +218,11 @@ const Map = () => {
                 </div>
             )}
 
+            <input
+                class="input"
+                type="text"
+                onChange={handleInput}
+            />
         </div>
     );
 };
