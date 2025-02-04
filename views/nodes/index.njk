@@ -1,6 +1,45 @@
-{% set pageTitle = "Marketing & Development services" %}
-{% set pageDescription = "Professional web development, SMM marketing, targeting, SEO, design, and chatbot creation services to elevate your online presence and accelerate business growth." %}
-{% set pageKeywords = "Web development, SMM marketing, Targeting, SEO services, Design, Chatbot creation, Digital marketing, Online presence, Business growth, Web services, Social media marketing, Search engine optimization, Graphic design, Chatbot development, Marketing solutions" %}
+{% set translations = {
+    "en": {
+        "pageTitle": "Marketing & Development services",
+        "pageDescription": "Professional web development, SMM marketing, targeting, SEO, design, and chatbot creation services to elevate your online presence and accelerate business growth.",
+        "pageKeywords": "Web development, SMM marketing, Targeting, SEO services, Design, Chatbot creation, Digital marketing, Online presence, Business growth, Web services, Social media marketing, Search engine optimization, Graphic design, Chatbot development, Marketing solutions",
+        "reminderTitle": "Client Reminder",
+        "reminderList": [
+            "1. After placing an order, you will receive a contract and payment details sent to the provided contact information. The order will be processed only after receiving the advance payment. You can review the terms of the offer contract <a href='/docs/Service_Contract_sample.pdf' target='blank_' class='reminder__link'>here</a>",
+            "2. The order is executed within the agreed-upon timeframe. Any extension of the deadlines by either party may be considered separately and documented in an attachment to the contract.",
+            "3. For any orders, a post-service support option is available. For details email us lang.tez.co@outlook.com"
+        ],
+        "finalText": "That’s it.<br>Let’s<br>collaborate!"
+    },
+    "ru": {
+        "pageTitle": "Маркетинг и разработка",
+        "pageDescription": "Профессиональная веб-разработка, SMM-маркетинг, таргетинг, SEO, дизайн и создание чат-ботов для улучшения вашего онлайн-присутствия и роста бизнеса.",
+        "pageKeywords": "Веб-разработка, SMM-маркетинг, Таргетинг, SEO услуги, Дизайн, Создание чат-ботов, Цифровой маркетинг, Интернет-присутствие, Рост бизнеса, Веб-услуги, Маркетинг в соцсетях, Поисковая оптимизация, Графический дизайн, Разработка чат-ботов, Маркетинговые решения",
+        "reminderTitle": "Напоминание клиенту",
+        "reminderList": [
+            "1. После оформления заказа вам будут отправлены договор и реквизиты для оплаты на указанный контакт. Заказ будет обработан только после получения предоплаты. Вы можете ознакомиться с условиями договора <a href='/docs/Service_Contract_sample.pdf' target='blank_' class='reminder__link'>здесь</a>",
+            "2. Заказ выполняется в согласованные сроки. Любое продление сроков одной из сторон может быть рассмотрено отдельно и зафиксировано в приложении к договору.",
+            "3. Для всех заказов доступен вариант пост-обслуживания. Для деталей напишите нам на lang.tez.co@outlook.com"
+        ],
+        "finalText": "Вот и все.<br>Давайте<br>сотрудничать!"
+    },
+    "tj": {
+        "pageTitle": "Хизматрасониҳои Маркетинг ва Рушд",
+        "pageDescription": "Коркарди вебсайтҳо, маркетинги SMM, ҳадафгузорӣ, SEO, тарроҳӣ ва эҷоди чат-ботҳо барои баланд бардоштани ҳузури онлайн ва рушди тиҷорат.",
+        "pageKeywords": "Коркарди веб, Маркетинги SMM, Ҳадафгузорӣ, Хизматрасониҳои SEO, Тарроҳӣ, Эҷоди чат-ботҳо, Маркетинги рақамӣ, Ҳузури онлайн, Рушди тиҷорат, Хизматрасониҳои веб, Маркетинги иҷтимоӣ, Оптимизатсияи ҷустуҷӯ, Тарроҳии графикӣ, Таҳияи чат-ботҳо, Ҳалли маркетинг",
+        "reminderTitle": "Ёдраскунии муштарӣ",
+        "reminderList": [
+            "1. Пас аз фармоиш, ба шумо шартнома ва тафсилоти пардохт ба тамоси пешниҳодшуда фиристода мешавад. Фармоиш танҳо пас аз гирифтани пешпардохт коркард мешавад. Шумо метавонед шартҳои шартномаро <a href='/docs/Service_Contract_sample.pdf' target='blank_' class='reminder__link'>ин ҷо</a> хонед.",
+            "2. Фармоиш дар муҳлати мувофиқ иҷро мешавад. Ҳар гуна тамдиди муҳлат бо як тараф метавонад алоҳида баррасӣ ва дар замимаи шартнома ҳуҷҷатгузорӣ карда шавад.",
+            "3. Барои ҳама фармоишҳо, имкони дастгирии пас аз хидматрасонӣ мавҷуд аст. Барои тафсилот ба мо нависед lang.tez.co@outlook.com"
+        ],
+        "finalText": "Тамом.<br>Биёед<br>ҳамкорӣ кунем!"
+    }
+} %}
+
+{% set pageTitle = translations[language].pageTitle|default("Marketing & Development services") %}
+{% set pageDescription = translations[language].pageDescription|default("Professional web development, SMM marketing, targeting, SEO, design, and chatbot creation services to elevate your online presence and accelerate business growth.") %}
+{% set pageKeywords = translations[language].pageKeywords|default("Web development, SMM marketing, Targeting, SEO services, Design, Chatbot creation, Digital marketing, Online presence, Business growth, Web services, Social media marketing, Search engine optimization, Graphic design, Chatbot development, Marketing solutions") %}
 
 {% extends "layouts/main.njk" %}
 
@@ -11,29 +50,22 @@
     <section class="section reminder" id="reminder">
         <div class="container container__base">
             <h2 class="section__title">
-                <div class="section__title--text">Client reminder</div>
+                <div class="section__title--text">{{ translations[language].reminderTitle }}</div>
             </h2>
         </div>
+
         <div class="container container__medium">
             <ul class="reminder__list">
+                {% for item in translations[language].reminderList %}
                 <li class="reminder__item">
                     <div class="reminder__card">
-                        1. After placing an order, you will receive a contract and payment details sent to the provided contact information. The order will be processed only after receiving the advance payment. You can review the terms of the offer contract <a href="/docs/Service_Contract_sample.pdf" target="blank_" class="reminder__link">here</a>
+                        {{ item | safe }}
                     </div>
                 </li>
-                <li class="reminder__item">
-                    <div class="reminder__card">
-                        2. The order is executed within the agreed-upon timeframe. Any extension of the deadlines by either party may be considered separately and documented in an attachment to the contract
-                    </div>
-                </li>
-                <li class="reminder__item">
-                    <div class="reminder__card">
-                        3. For any orders, a post-service support option is available. For details email us lang.tez.co@outlook.com</a>
-                    </div>
-                </li>
+                {% endfor %}
                 <li class="reminder__item">
                     <div class="reminder__card reminder__card--final">
-                        <span class="reminder__card--text">That’s it.<br>Let’s<br>collaborate!</span>
+                        <span class="reminder__card--text">{{ translations[language].finalText | safe }}</span>
                         <div class="reminder__cat">
                             {% set includeIcon = 'cat' %}
                             {% include 'includes/svg.njk' %}

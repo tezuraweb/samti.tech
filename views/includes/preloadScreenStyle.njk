@@ -1,0 +1,46 @@
+<style>
+    #preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition: opacity 0.3s ease 0.3s, visibility 0.3s ease 0.3s;
+    }
+
+    #preloader.fade-out {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    #preloader-text {
+        font-size: 3rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        position: relative;
+        display: inline-block;
+        background: linear-gradient(
+            -45deg,
+            #592793 0%,
+            #312063 25%,
+            #3E2473 41%,
+            #7956B2 63%,
+            #592793 100%
+        );
+        background-size: 200% 200%;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: shimmer 3s infinite linear;
+    }
+
+    @keyframes shimmer {
+        0% { background-position: -200% 0; }
+        100% { background-position: 200% 0; }
+    }
+</style>

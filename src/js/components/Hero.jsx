@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setLanguage, setCurrency } from '../redux/actions/actions';
 
-import Sparkle from './Sparkle';
+// import Sparkle from './Sparkle';
 import localization from '../../../assets/json/localization.json';
 
 const HeroSection = ({ scrollToServices, currencies, callForm, supportedLangs }) => {
@@ -105,6 +105,7 @@ const HeroSection = ({ scrollToServices, currencies, callForm, supportedLangs })
     const handleLanguageSelect = (lang) => {
         setLangListVisible(!langListVisible);
         dispatch(setLanguage(lang));
+        window.location.pathname = `/${lang}${window.location.pathname.replace(/^\/(en|ru|tj)/, '')}`;
     };
 
     const openForm = () => {
@@ -113,7 +114,7 @@ const HeroSection = ({ scrollToServices, currencies, callForm, supportedLangs })
 
     return (
         <section className="section hero">
-            <Sparkle />
+            {/* <Sparkle /> */}
 
             <div className="hero__background" ref={backgroundRef}>
                 <div className='wave -three'></div>

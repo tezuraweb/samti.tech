@@ -5,7 +5,7 @@ const Services = lazy(() => import('./components/Services'));
 const Projects = lazy(() => import('./components/Projects'));
 const LeadForm = lazy(() => import('./components/Form'));
 
-const Loading = () => <div>Loading...</div>;
+const Loading = () => <div class="loader"></div>;
 
 const App = () => {
     const currencies = {
@@ -42,7 +42,7 @@ const App = () => {
     }
 
     return (
-        <div>
+        <>
             <Suspense fallback={<Loading />}>
                 <Hero
                     currencies={currencies}
@@ -63,13 +63,13 @@ const App = () => {
                 />
             </Suspense>
             {isFormVisible && (
-                <Suspense fallback={<Loading />}>
+                <Suspense>
                     <LeadForm 
                         afterSubmit={() => setIsFormVisible(false)}
                     />
                 </Suspense>
             )}
-        </div>
+        </>
     );
 };
 

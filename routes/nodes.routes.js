@@ -4,7 +4,7 @@ const router = express.Router();
 router
     .route('/')
     .get((req, res) => {
-        res.render('nodes/index');
+        res.redirect('/en');
     });
 
 router

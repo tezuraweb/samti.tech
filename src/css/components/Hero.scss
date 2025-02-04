@@ -72,7 +72,6 @@
         &--active {
             position: relative;
             background-color: $black;
-            ;
             width: 46px;
             padding: 12px 0;
             line-height: 1;
@@ -313,7 +312,7 @@
             &--list {
                 background-color: $black;
                 z-index: 1;
-                left: 0;
+                right: -35px;
                 top: 35px;
             }
 

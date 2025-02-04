@@ -9,22 +9,31 @@
         link: 'https://www.linkedin.com/in/lang-bey-7ba679223/',
         title: 'LinkedIn'
     }
-    ] %}
-
-{% set infoLinks = [
-    {
-        title: 'Start a project',
-        id: 'startProjectButton'
-    },
-    {
-        link: 'mailto:lang.tez.co@outlook.com',
-        title: 'Other inquiry'
-    },
-    {
-        link: '/docs/Privacy_Policy.pdf',
-        title: 'Privacy policy'
-    }
 ] %}
+
+{% set translations = {
+    "en": {
+        "infoLinks": [
+            { "title": "Start a project", "id": "startProjectButton" },
+            { "link": "mailto:lang.tez.co@outlook.com", "title": "Other inquiry" }
+        ],
+        "footerYear": "2025"
+    },
+    "ru": {
+        "infoLinks": [
+            { "title": "Начать проект", "id": "startProjectButton" },
+            { "link": "mailto:lang.tez.co@outlook.com", "title": "Другой запрос" }
+        ],
+        "footerYear": "2025"
+    },
+    "tj": {
+        "infoLinks": [
+            { "title": "Оғози лоиҳа", "id": "startProjectButton" },
+            { "link": "mailto:lang.tez.co@outlook.com", "title": "Дигар дархост" }
+        ],
+        "footerYear": "2025"
+    }
+} %}
 
 <footer class="footer">
     {% if hideFooterLinks %}
@@ -48,17 +57,17 @@
         <div class="footer__column footer__column--middle container__base">
             <div class="footer__wrapper">
                 <ul class="footer__links">
-                    {% for item in infoLinks %}
+                    {% for item in translations[language].infoLinks %}
                         <li class="footer__links--item">
-                                {% if item.link %}
-                                    <a href="{{ item.link }}" class="footer__links--link">
-                                        {{ item.title }}
-                                    </a>
-                                {% else %}
-                                    <div {% if item.id %}id="{{ item.id }}"{% endif %} class="footer__links--link">
-                                        {{ item.title }}
-                                    </div>
-                                {% endif %}
+                            {% if item.link %}
+                                <a href="{{ item.link }}" class="footer__links--link">
+                                    {{ item.title }}
+                                </a>
+                            {% else %}
+                                <div {% if item.id %}id="{{ item.id }}"{% endif %} class="footer__links--link">
+                                    {{ item.title }}
+                                </div>
+                            {% endif %}
                         </li>
                     {% endfor %}
                 </ul>
@@ -71,7 +80,7 @@
                     {% set includeIcon = 'cat' %}
                     {% include 'includes/svg.njk' %}
                 </div>
-                <div class="footer__year">2024</div>
+                <div class="footer__year">{{ translations[language].footerYear }}</div>
             </div>
         </div>
     {% endif %}

@@ -108,15 +108,23 @@
     }
 
     @media (max-width: $laptop-breakpoint-1) {
-        &__social--link {
-            font-size: 35px;
+        &__social {
+            &--link {
+                font-size: 35px;
+            }
         }
     }
 
     @media (max-width: $laptop-breakpoint-2) {
-        &__social--link {
-            font-size: 23px;
-            padding: 20px 0;
+        &__social {
+            &--link {
+                font-size: 23px;
+                padding: 20px 0;
+
+                &::after {
+                    bottom: 17px;
+                }
+            }
         }
 
         &__button {
@@ -158,6 +166,11 @@
                 font-weight: 400;
                 padding: 0;
                 margin-bottom: 15px;
+
+                &::after {
+                    height: 10px;
+                    bottom: -2px;
+                }
             }
         }
 

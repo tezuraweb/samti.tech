@@ -7,7 +7,19 @@ import App from './app';
 
 document.addEventListener('DOMContentLoaded', () => {
     const root = document.getElementById('root');
-    
+
+    const hidePreloader = () => {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+            setTimeout(() => {
+                preloader.classList.add('fade-out');
+                setTimeout(() => {
+                    preloader.remove();
+                }, 600);
+            }, 500);
+        }
+    };
+
     if (root) {
         ReactDOM.render(
             <Provider store={store}>
@@ -15,7 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     <App />
                 </PersistGate>
             </Provider>,
-            root
+            root,
+            hidePreloader
         );
     }
 
