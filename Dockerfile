@@ -1,10 +1,11 @@
 FROM node:20-alpine
 WORKDIR /usr/src/app
 COPY package*.json ./
-RUN npm ci --omit=dev || npm install --omit=dev
+RUN npm ci
 COPY . .
 RUN npm run build
+RUN npm prune --omit=dev
 ENV NODE_ENV=production
 ENV PORT=3000
 EXPOSE 3000
-CMD ["npm", "start"]
+CMD ["node", "app.js"]
