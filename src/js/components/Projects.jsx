@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 
 import localization from '../../../assets/json/localization.json';
 
-const Projects = ({ callForm }) => {
+const Projects = () => {
     const currentLang = useSelector((state) => state.language?.currentLang || 'en');
-    
+
     const projects = [
         {
             id: 'webdev',
@@ -13,7 +13,6 @@ const Projects = ({ callForm }) => {
             title: localization[currentLang].proj1Title,
             summary: localization[currentLang].proj1Desc,
             cover: '/img/main/meditary.webp',
-            width: '300'
         },
         {
             id: 'design',
@@ -21,7 +20,6 @@ const Projects = ({ callForm }) => {
             title: localization[currentLang].proj2Title,
             summary: localization[currentLang].proj2Desc,
             cover: '/img/main/realestate.webp',
-            width: '330'
         },
         {
             id: 'interface',
@@ -29,7 +27,6 @@ const Projects = ({ callForm }) => {
             title: localization[currentLang].proj3Title,
             summary: localization[currentLang].proj3Desc,
             cover: '/img/main/rimera.webp',
-            width: '330'
         },
         {
             id: 'smm',
@@ -37,50 +34,37 @@ const Projects = ({ callForm }) => {
             title: localization[currentLang].proj4Title,
             summary: localization[currentLang].proj4Desc,
             cover: '/img/main/zippy.webp',
-            width: '330'
         }
     ];
 
-    const openForm = () => {
-        callForm();
-    }
-
     return (
-        <section className="section cards" id="cards">
-            <div className="container container__base">
-                <h2 className="section__title">
-                    <span className="section__title--text">{localization[currentLang].projectsTitle}</span>
-                </h2>
+        <section className="section portfolio" id="cards">
+            <div className="container container__medium">
+                <header className="portfolio__header">
+                    <h2 className="portfolio__title">{localization[currentLang].projectsTitle}</h2>
+                    <p className="portfolio__subtitle">{localization[currentLang].projectsSubtitle || ''}</p>
+                </header>
             </div>
-            <div className="container container__wide">
-                <ul className="cards__list">
+            <div className="container container__medium">
+                <div className="portfolio__grid">
                     {projects.map((project) => (
-                        <li key={project.id} className={`cards__item cards__item--${project.id}`}>
-                            <div className="cards__wrapper">
-                                <div className="cards__cover">
-                                    <a href={project.link} className="cards__cover--link" aria-label="Link to project">
-                                        <picture className="cards__cover--picture">
-                                            <img className="cards__cover--img" src={project.cover} alt={project.title} width={project.width} height="330" />
-                                        </picture>
-                                    </a>
-                                </div>
-                                <div className="cards__text">
-                                    <div className={`cards__title ${currentLang === 'ru' || currentLang === 'tj' ? 'cards__title--foreignRuTj' : ''}`}>{project.title}</div>
-                                    <div className="cards__summary">{project.summary}</div>
-                                </div>
-                                <a href={project.link} className="cards__button button" aria-label="Link to project"></a>
+                        <a key={project.id} href={project.link} className="portfolio__card" aria-label={`Open ${project.title}`}>
+                            <div className="portfolio__image-link">
+                                <img
+                                    className="portfolio__image"
+                                    src={project.cover}
+                                    alt={project.title}
+                                    loading="lazy"
+                                />
                             </div>
-                        </li>
+                            <div className="portfolio__info">
+                                <div className="portfolio__tag">// {localization[currentLang].projectTag || 'project'}</div>
+                                <h3 className="portfolio__card-title">{project.title}</h3>
+                                <p className="portfolio__card-summary">{project.summary}</p>
+                            </div>
+                        </a>
                     ))}
-
-                    <li className="cards__item cards__item--button">
-                        <div className="cards__wrapper">
-                            <button className="cards__start" onClick={() => openForm()}>
-                                {localization[currentLang].start}!
-                            </button>
-                        </div>
-                    </li>
-                </ul>
+                </div>
             </div>
         </section>
     );

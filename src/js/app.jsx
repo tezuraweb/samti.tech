@@ -4,6 +4,7 @@ const Hero = lazy(() => import('./components/Hero'));
 const Services = lazy(() => import('./components/Services'));
 const Projects = lazy(() => import('./components/Projects'));
 const LeadForm = lazy(() => import('./components/Form'));
+const FloatingButton = lazy(() => import('./components/FloatingButton'));
 
 const Loading = () => <div class="loader"></div>;
 
@@ -41,6 +42,10 @@ const App = () => {
         setIsFormVisible(true);
     }
 
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
     return (
         <>
             <Suspense fallback={<Loading />}>
@@ -61,6 +66,9 @@ const App = () => {
                 <Projects 
                     callForm={openForm} 
                 />
+            </Suspense>
+            <Suspense fallback={<Loading />}>
+                <FloatingButton onClick={openForm} onScrollTop={scrollToTop} />
             </Suspense>
             {isFormVisible && (
                 <Suspense>

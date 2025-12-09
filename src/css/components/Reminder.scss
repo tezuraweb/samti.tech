@@ -1,141 +1,127 @@
 .reminder {
-    &__list {
-        display: flex;
-        flex-wrap: wrap;
-        margin: 0 -45px;
+    padding: 40px 0 60px;
+
+    &__header {
+        margin-bottom: 24px;
     }
 
-    &__item {
-        padding: 20px 45px;
-        flex-basis: 50%;
-        min-height: 318px;
+    &__title {
+        font-size: 32px;
+        font-weight: 700;
+        margin: 0 0 6px;
+        color: $white;
+    }
+
+    &__subtitle {
+        font-size: 16px;
+        color: rgba(255, 255, 255, .7);
+        margin: 0;
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
     }
 
     &__card {
         position: relative;
-        padding: 40px;
-        border-radius: 20px;
-        background-color: $grey;
-        font-size: 30px;
-        color: black;
-        height: 100%;
+        padding: 28px 24px 32px 32px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, .04);
+        border: 1px solid rgba(255, 255, 255, .08);
+        color: $white;
+        min-height: 180px;
+        overflow: hidden;
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        box-shadow: 0 14px 40px rgba(0, 0, 0, .25);
+    }
 
-        &--text {
-            position: relative;
-            font-family: 'Radiotechnika', 'Trispace';
-            font-size: 40px;
-            line-height: 1.1;
-            font-weight: 600;
-            color: $white;
+    &__marker {
+        font-size: 18px;
+        font-weight: 700;
+        color: rgba($greenCorporate, .9);
+        flex-shrink: 0;
+    }
 
-            &::before {
-                content: '//';
-                position: absolute;
-                left: -60px;
-            }
+    &__text {
+        font-size: 16px;
+        line-height: 1.5;
+        color: rgba(255, 255, 255, .85);
+
+        a {
+            color: $greenCorporate;
+            text-decoration: underline;
         }
 
         &--final {
-            background: linear-gradient(128deg, rgba(114, 61, 159, 1) 0%, rgba(102, 49, 144, 1) 35%, rgba(111, 54, 156, 1) 61%, rgba(40, 24, 62, 1) 100%);
-            padding: 55px 100px;
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.4;
         }
+    }
+
+    &__card--final {
+        grid-column: span 3;
+        background: linear-gradient(135deg, rgba($greenCorporate, .18), rgba(100, 255, 210, .14), rgba(138, 197, 255, .16));
+        border-color: rgba($greenCorporate, .4);
+        display: flex;
+        align-items: center;
     }
 
     &__cat {
-        position: absolute;
-        right: 100px;
-        bottom: -15px;
-    }
+        margin-left: auto;
+        max-width: 90px;
 
-    &__link {
-        text-decoration: underline;
-    }
-
-    @media (max-width: $desktop-breakpoint) {
-        &__cat {
-            right: 30px;
-        }
-    }
-
-    @media (max-width: $laptop-breakpoint-1) {
-        &__item {
-            min-height: 300px;
-        }
-
-        &__card {
-            font-size: 25px;
-
-            &--final {
-                padding: 55px 80px;
-            }
-
-            &--text {
-                font-size: 35px;
-
-                &::before {
-                    left: -50px;
-                }
-            }
-        }
-
-        &__cat {
-            right: -30px;
+        svg {
+            width: 100%;
+            height: auto;
         }
     }
 
     @media (max-width: $laptop-breakpoint-2) {
-        &__item {
-            flex-basis: 100%;
-            min-height: 230px;
+        &__grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
-        &__cat {
-            right: -20px;
-            bottom: -30px;
+        &__card--final {
+            grid-column: span 2;
         }
     }
 
     @media (max-width: $tablet-breakpoint-1) {
-        &__item {
-            min-height: 105px;
-            padding: 10px 45px;
+        padding: 30px 0 40px;
+
+        &__grid {
+            grid-template-columns: 1fr;
         }
 
         &__card {
-            font-size: 16px;
-            padding: 12px 43px 12px 18px;
-
-            &--final {
-                padding: 12px 43px 12px 50px;
-            }
-
-            &--text {
-                font-size: 22px;
-
-                &::before {
-                    left: -31px;
-                }
-            }
+            min-height: auto;
         }
 
-        &__cat {
-            display: none;
+        &__card--final {
+            grid-column: span 1;
         }
     }
 
     @media (max-width: $mobile-breakpoint) {
-        &__list {
-            margin: 0;
+        &__title {
+            font-size: 24px;
         }
 
-        &__item {
-            padding: 10px 0;
+        &__text {
+            font-size: 14px;
         }
 
-        &__card {
-            &--text {
-                font-size: 20px;
-            }
+        &__text--final {
+            font-size: 18px;
+        }
+
+        &__cat {
+            display: none;
         }
     }
 }
