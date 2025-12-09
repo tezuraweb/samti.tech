@@ -3,3 +3,5 @@ static/dist/
 .env
 .eslintrc
 **/.DS_Store*
+views/includes/versionJs.njk
+views/includes/versionCss.njk

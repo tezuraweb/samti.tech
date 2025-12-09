@@ -152,6 +152,10 @@ const LeadForm = ({ afterSubmit }) => {
             <div className="form__container">
                 <form className="form__wrapper" onSubmit={handleSubmit}>
                     <div className="form__column form__column--first">
+                        <div className="form__header">
+                            <h3 className="form__title">{localization[currentLang].start}</h3>
+                            <p className="form__subtitle">{localization[currentLang].formSubtitle || ''}</p>
+                        </div>
                         <div className="form__line">
                             <input
                                 className="form__input"

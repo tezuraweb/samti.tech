@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
 @font-face {
     font-family: 'Sansation';
     font-style: normal;
@@ -34,7 +36,7 @@
 }
 
 @font-face {
-    font-family: 'Radiotechnika-special';
+    font-family: 'Poppins', 'Sansation', sans-serif;
     src: local(''),
         url('../../assets/fonts/Play-Regular.woff2') format('woff2'),
         url('../../assets/fonts/Play-Regular.woff') format('woff');

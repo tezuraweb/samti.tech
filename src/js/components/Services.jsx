@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import { useSelector } from 'react-redux';
 
 import IconSprite from '../includes/IconSprite';
@@ -38,7 +38,26 @@ const Services = forwardRef(({ callForm }, ref) => {
                     width: 176,
                     height: 35,
                 },
-            ]
+            ],
+            href: '/services/web-development'
+        },
+        {
+            type: 'tg',
+            title: localization[currentLang].tgTitle,
+            summary: localization[currentLang].tgDesc,
+            icons: [
+                {
+                    name: 'AppleIcon',
+                    width: 66,
+                    height: 80,
+                },
+                {
+                    name: 'AndroidIcon',
+                    width: 66,
+                    height: 80,
+                },
+            ],
+            href: '/services/mobile-apps-bots'
         },
         {
             type: 'smm',
@@ -63,24 +82,15 @@ const Services = forwardRef(({ callForm }, ref) => {
                 {
                     name: 'PinterestIcon',
                 },
-            ]
+            ],
+            href: '/services/smm'
         },
         {
             type: 'seo',
             title: localization[currentLang].seoTitle,
             summary: localization[currentLang].seoDesc,
-            icons: [
-                {
-                    name: 'TargetIcon',
-                    width: 111,
-                    height: 110,
-                },
-                {
-                    name: 'SeoIcon',
-                    width: 165,
-                    height: 80,
-                },
-            ]
+            icons: [],
+            href: '/services/seo'
         },
         {
             type: 'design',
@@ -112,139 +122,50 @@ const Services = forwardRef(({ callForm }, ref) => {
                     width: 98,
                     height: 80,
                 },
-            ]
-        },
-        {
-            type: 'tg',
-            title: localization[currentLang].tgTitle,
-            summary: localization[currentLang].tgDesc,
-            icons: [
-                {
-                    name: 'BotIcon',
-                    width: 88,
-                    height: 80,
-                },
-                {
-                    name: 'AppleIcon',
-                    width: 66,
-                    height: 80,
-                },
-                {
-                    name: 'AndroidIcon',
-                    width: 66,
-                    height: 80,
-                },
-            ]
+            ],
+            href: '/services/design'
         },
         {
             type: 'analytics',
             title: localization[currentLang].analyticsTitle,
             summary: localization[currentLang].analyticsDesc,
-            icons: [
-                {
-                    name: 'GraphIcon',
-                    width: 203,
-                    height: 172,
-                },
-            ]
+            icons: [],
+            href: '/services/business-analysis'
         },
     ];
-    const servicesFooterRef = useRef(null);
-    const leadButtonRef = useRef(null);
-
-    const [selectedIndex, setSelectedIndex] = useState(0);
-    const [selectedService, setSelectedService] = useState(services[selectedIndex]);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            if (!servicesFooterRef.current || !leadButtonRef.current) return;
-
-            const footer = servicesFooterRef.current;
-            const button = leadButtonRef.current;
-
-            const footerRect = footer.getBoundingClientRect();
-            const buttonRect = button.getBoundingClientRect();
-
-            if (footerRect.bottom - 100 <= window.innerHeight) {
-                button.classList.add('sticky-bottom');
-            } else {
-                button.classList.remove('sticky-bottom');
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-
-    const handleSelectIndex = (index) => {
-        setSelectedIndex(index);
-        selectService(services[index]);
-    };
-
-    const nextSlide = () => {
-        const newIndex = (selectedIndex + 1) % services.length;
-        setSelectedIndex(newIndex);
-        selectService(services[newIndex]);
-    };
-
-    const prevSlide = () => {
-        const newIndex = selectedIndex > 0 ? selectedIndex - 1 : services.length - 1;
-        setSelectedIndex(newIndex);
-        selectService(services[newIndex]);
-    };
-
-    const selectService = (service) => {
-        setSelectedService(service);
-    };
-
-    const openForm = () => {
-        callForm();
-    }
 
     return (
         <section className="section services" ref={ref}>
-            <div class="container container__noPadding">
-                <div className="services__wrapper">
-                    <div className="services__header">
-                        <button className="services__button services__prev button" onClick={() => prevSlide()} aria-label="Previous service">
-                            <span className="services__button--text">//<br />ba<br />ck</span>
-                        </button>
-                        <div className="services__poster">
-                            <div className="services__text">
-                                <div className={`services__title ${currentLang === 'ru' || currentLang === 'tj' ? 'services__title--foreignRuTj' : ''}`} key={selectedService.type}>
-                                    <span className="services__title--text">{selectedService.title}</span>
-                                </div>
-                                <div className="services__summary">{selectedService.summary}</div>
-                            </div>
-                            <div className={"services__icons services__icons--" + selectedService.type}>
-                                {selectedService.icons.map((icon) => (
-                                    <IconSprite key={icon.name} selector={icon.name} width={icon.width || 64} height={icon.height || 64} />
+            <div className="container container__noPadding services__container">
+                <div className="services__grid">
+                    {services.map((service, index) => (
+                        <article
+                            key={service.type}
+                            className={`services__card services__card--${service.type} ${index < 2 ? 'services__card--priority' : ''}`}
+                        >
+                            <header className="services__card-header">
+                                <h3 className="services__card-title">{service.title}</h3>
+                                <button
+                                    className="services__card-arrow"
+                                    onClick={() => window.open(service.href, '_self')}
+                                    aria-label={`Open ${service.title}`}
+                                >
+                                    <IconSprite selector="ArrowCard" width={20} height={20} />
+                                </button>
+                            </header>
+                            <p className="services__card-summary">{service.summary}</p>
+                            <div className={`services__icons services__icons--${service.type}`}>
+                                {service.icons.map((icon) => (
+                                    <IconSprite
+                                        key={icon.name}
+                                        selector={icon.name}
+                                        width={icon.width || 64}
+                                        height={icon.height || 64}
+                                    />
                                 ))}
                             </div>
-                        </div>
-                        <button className="services__button services__next button" onClick={() => nextSlide()} aria-label="Next service">
-                            <span className="services__button--text">//<br />ne<br />xt</span>
-                        </button>
-                    </div>
-
-                    <div className="services__footer" ref={servicesFooterRef}>
-                        <ul className="services__list">
-                            {services.map((service, index) => (
-                                <li key={index} className={`services__item ${currentLang === 'ru' || currentLang === 'tj' ? 'services__item--foreignRuTj' : ''}` + (index == selectedIndex ? " active" : "")} onClick={() => handleSelectIndex(index)}>
-                                    {service.title}
-                                </li>
-                            ))}
-                        </ul>
-
-                        <div className="services__lead">
-                            <button className="services__lead--button" onClick={() => openForm()} ref={leadButtonRef} aria-label="Start a project">
-                                <IconSprite selector="FormIcon" width="242" height="344" />
-                            </button>
-                        </div>
-                    </div>
+                        </article>
+                    ))}
                 </div>
             </div>
         </section>

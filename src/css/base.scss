@@ -17,7 +17,7 @@ body {
     padding: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-family: "Sansation", sans-serif;
+    font-family: 'Poppins', 'Sansation', sans-serif;
     background-color: $black;
     background-position: 0 0;
     background-size: 100% auto;
@@ -129,7 +129,7 @@ img {
     }
     
     &__title {
-        font-family: 'Radiotechnika', 'Trispace';
+        font-family: 'Poppins', 'Sansation', sans-serif;
         font-size: 64px;
         line-height: 1;
         font-weight: 600;

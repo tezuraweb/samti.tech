@@ -48,31 +48,27 @@
     <div id="root"></div>
 
     <section class="section reminder" id="reminder">
-        <div class="container container__base">
-            <h2 class="section__title">
-                <div class="section__title--text">{{ translations[language].reminderTitle }}</div>
-            </h2>
-        </div>
-
         <div class="container container__medium">
-            <ul class="reminder__list">
+            <div class="reminder__header">
+                <h2 class="reminder__title">{{ translations[language].reminderTitle }}</h2>
+                <p class="reminder__subtitle">{{ translations[language].reminderSubtitle or '' }}</p>
+            </div>
+            <div class="reminder__grid">
                 {% for item in translations[language].reminderList %}
-                <li class="reminder__item">
-                    <div class="reminder__card">
-                        {{ item | safe }}
-                    </div>
-                </li>
+                <article class="reminder__card">
+                    <div class="reminder__marker">//</div>
+                    <div class="reminder__text">{{ item | safe }}</div>
+                </article>
                 {% endfor %}
-                <li class="reminder__item">
-                    <div class="reminder__card reminder__card--final">
-                        <span class="reminder__card--text">{{ translations[language].finalText | safe }}</span>
-                        <div class="reminder__cat">
-                            {% set includeIcon = 'cat' %}
-                            {% include 'includes/svg.njk' %}
-                        </div>
+                <article class="reminder__card reminder__card--final">
+                    <div class="reminder__marker">//</div>
+                    <div class="reminder__text reminder__text--final">{{ translations[language].finalText | safe }}</div>
+                    <div class="reminder__cat">
+                        {% set includeIcon = 'cat' %}
+                        {% include 'includes/svg.njk' %}
                     </div>
-                </li>
-            </ul>
+                </article>
+            </div>
         </div>
     </section>
 
