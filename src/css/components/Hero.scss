@@ -48,52 +48,87 @@
         max-width: 560px;
         aspect-ratio: 1 / 1;
         border-radius: 50%;
-        background: linear-gradient(160deg, #3604214a 0%, #1a3556a8 45% 45%, #090112db 100%);
-        box-shadow: 0 0 160px rgba(98, 121, 255, .12);
+        background: transparent;
+        box-shadow: none;
         transform: translateZ(0);
         overflow: hidden;
 
+        &::before,
         &::after {
             content: '';
-            // content: 'resident of Dushanbe IT Park';
             position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            font-size: 12px;
-            font-family: 'Poppins', cursive;
-            font-style: italic;
-            letter-spacing: .5px;
-            text-transform: none;
-            color: $black;
+            inset: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 1px dashed rgba(255, 255, 255, .28);
             pointer-events: none;
+            animation: orb-spin 14s linear infinite;
+            mix-blend-mode: screen;
+        }
+
+        &::before {
+            width: 110%;
+            height: 110%;
+        }
+
+        &::after {
+            width: 35%;
+            height: 35%;
+            animation-direction: reverse;
+            opacity: .65;
         }
 
         &-canvas {
             position: absolute;
             inset: 0;
-            width: 140%;
-            height: 140%;
-            left: -20%;
-            top: -10%;
-            filter: blur(8px);
-            opacity: .9;
+            width: 120%;
+            height: 120%;
+            left: -10%;
+            top: -6%;
+            filter: blur(2px);
+            opacity: 1;
+            mix-blend-mode: screen;
             pointer-events: none;
+        }
+
+        &-text {
+            position: absolute;
+            top: 50%;
+            right: -50%;
+            display: block;
+            width: 100%;
+            height: 100%;
+            transform: translate(0, -50%);
+            animation: orb-spin 16s linear infinite;
+            mix-blend-mode: screen;
+
+            text {
+                font-size: 3px;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                fill: rgba(255, 255, 255, .5);
+                font-family: 'Poppins', 'Sansation', sans-serif;
+            }
+        }
+    }
+
+    @media (min-width: 1440px) {
+        &__orb {
+            right: calc((100vw - 1280px) / 2 + 60px);
+        }
+    }
+
+    @keyframes orb-spin {
+        from {
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+        to {
+            transform: translate(-50%, -50%) rotate(360deg);
         }
     }
 
     &__orb-shadow {
-        position: absolute;
-        right: -12%;
-        bottom: -18%;
-        width: 58vw;
-        height: 58vw;
-        max-width: 780px;
-        max-height: 780px;
-        background: radial-gradient(circle, rgba(255, 255, 255, .06) 0%, rgba(0, 0, 0, 0) 60%);
-        filter: blur(70px);
+        display: none;
     }
 
     &__container {
@@ -293,6 +328,7 @@
         background: rgba(255, 255, 255, .05);
         cursor: pointer;
         transition: background .2s ease, border-color .2s ease, transform .2s ease;
+        display: none;
 
         &:hover {
             background: rgba(255, 255, 255, .15);

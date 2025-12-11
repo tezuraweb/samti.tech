@@ -1,0 +1,60 @@
+{% set serviceTranslations = {
+    "web-development": {
+        "en": { "title": "Web development", "desc": "Custom websites, applications, e-commerce platforms, and business solutions built to drive growth and improve your online presence." },
+        "ru": { "title": "Веб-разработка", "desc": "Веб-сайты, приложения, e-commerce и бизнес-решения, которые помогают росту и улучшают ваше онлайн-присутствие." },
+        "tj": { "title": "Веб‑рушд", "desc": "Сомонаҳои фармоишӣ, замимаҳо, e‑commerce ва ҳалли бизнес барои рушди ҳузури онлайн." }
+    },
+    "mobile-apps-bots": {
+        "en": { "title": "Mobile apps & bots", "desc": "Mobile apps, chatbots, and integrations to streamline processes, automate tasks, and improve user engagement." },
+        "ru": { "title": "Мобильные приложения и боты", "desc": "Мобильные приложения, чат-боты и интеграции для автоматизации процессов и улучшения взаимодействия с пользователями." },
+        "tj": { "title": "Барномаҳо ва ботҳо", "desc": "Барномаҳои мобилӣ ва ботҳо барои автоматизатсия ва беҳтар кардани таҷрибаи корбар." }
+    },
+    "smm": {
+        "en": { "title": "SMM marketing", "desc": "Content, campaigns, and community management to boost reach and brand awareness across social channels." },
+        "ru": { "title": "SMM маркетинг", "desc": "Контент, кампании ва управление сообществом для роста охвата и узнаваемости бренда в соцсетях." },
+        "tj": { "title": "Маркетинги SMM", "desc": "Контент ва кампанияҳо барои зиёд кардани дастрасӣ ва маъруфияти бренд дар шабакаҳои иҷтимоӣ." }
+    },
+    "seo": {
+        "en": { "title": "Targeting & SEO", "desc": "Search optimization, targeting, and analytics to improve visibility and attract the right audience." },
+        "ru": { "title": "Таргетинг и SEO", "desc": "Оптимизация, таргетинг и аналитика для роста видимости и привлечения целевой аудитории." },
+        "tj": { "title": "Ҳадафгузорӣ ва SEO", "desc": "Оптимизатсия ва ҳадафгузорӣ барои беҳтар шудани намоёнӣ ва ҷалби аудиторияи дуруст." }
+    },
+    "design": {
+        "en": { "title": "Design services", "desc": "Branding, UI/UX, 3D, and visuals that align with your product and stand out." },
+        "ru": { "title": "Дизайн", "desc": "Брендинг, UI/UX, 3D и визуализация, согласованные с продуктом и заметные на рынке." },
+        "tj": { "title": "Тарроҳӣ", "desc": "Брендинг, UI/UX, 3D ва визуал барои намоён кардани маҳсулоти шумо." }
+    },
+    "business-analysis": {
+        "en": { "title": "Business analysis", "desc": "Research, metrics, and process design to inform product decisions and growth plans." },
+        "ru": { "title": "Бизнес-аналитика", "desc": "Исследования, метрики и проектирование процессов для взвешенных продуктовых решений и роста." },
+        "tj": { "title": "Бизнес-таҳлил", "desc": "Тадқиқот, метрика ва тарҳрезии равандҳо барои қарорҳои дурусти маҳсулот ва рушд." }
+    }
+} %}
+
+{% set notes = {
+    "en": "This service section is being updated. Full details coming soon.",
+    "ru": "Раздел услуги обновляется. Полное описание скоро появится.",
+    "tj": "Ин бахши хидматрасонӣ нав мешавад. Маълумоти пурра ба зудӣ нашр мешавад."
+} %}
+
+{% set lang = language or 'en' %}
+{% set service = serviceTranslations[slug] or serviceTranslations["web-development"] %}
+{% set current = service[lang] or service["en"] %}
+
+{% set pageTitle = current.title %}
+{% set pageDescription = current.desc %}
+{% set keywords = current.title %}
+
+{% extends "layouts/main.njk" %}
+
+{% block mainContent %}
+<section class="section section__service">
+    <div class="container container__medium">
+        <h1 class="section__title">
+            <div class="section__title--text">{{ current.title }}</div>
+        </h1>
+        <p class="section__desc">{{ current.desc }}</p>
+        <div class="section__note">{{ notes[lang] }}</div>
+    </div>
+</section>
+{% endblock %}

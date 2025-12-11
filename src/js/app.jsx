@@ -34,6 +34,15 @@ const App = () => {
         };
     }, [isFormVisible]);
 
+    useEffect(() => {
+        const handleOpenForm = () => setIsFormVisible(true);
+        window.addEventListener('openLeadForm', handleOpenForm);
+
+        return () => {
+            window.removeEventListener('openLeadForm', handleOpenForm);
+        };
+    }, []);
+
     const scrollToServices = () => {
         servicesRef.current?.scrollIntoView({ behavior: 'smooth' });
     };

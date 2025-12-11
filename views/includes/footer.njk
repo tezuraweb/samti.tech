@@ -16,22 +16,19 @@
         "infoLinks": [
             { "title": "Start a project", "id": "startProjectButton" },
             { "link": "mailto:lang.tez.co@outlook.com", "title": "Other inquiry" }
-        ],
-        "footerYear": "2025"
+        ]
     },
     "ru": {
         "infoLinks": [
             { "title": "Начать проект", "id": "startProjectButton" },
             { "link": "mailto:lang.tez.co@outlook.com", "title": "Другой запрос" }
-        ],
-        "footerYear": "2025"
+        ]
     },
     "tj": {
         "infoLinks": [
             { "title": "Оғози лоиҳа", "id": "startProjectButton" },
             { "link": "mailto:lang.tez.co@outlook.com", "title": "Дигар дархост" }
-        ],
-        "footerYear": "2025"
+        ]
     }
 } %}
 
@@ -73,7 +70,7 @@
                     </div>
                 </div>
                 <div class="footer__bottom">
-                    <div class="footer__year">{{ translations[language].footerYear }}</div>
+                    <div class="footer__year">{{ translations[language].footerYear or '' }}</div>
                     <a href="/static/docs/Privacy_Policy.pdf" class="footer__policy" target="_blank" rel="noopener">Privacy Policy</a>
                 </div>
             </div>

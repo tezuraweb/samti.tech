@@ -1,37 +1,395 @@
+{% set portfolioTranslations = {
+    "web-development": {
+        "en": {
+            pageTitle: "EMIS Tajikistan – Digital TVET management",
+            pageDescription: "National EMIS platform for Tajikistan: microservice architecture, multilingual React frontend, role-based access, and AI-ready modules for vocational education.",
+            pageKeywords: "EMIS, TVET, education management, microservices, React, Next.js, gRPC, REST, digitalization, Tajikistan, role-based access, AI modules",
+            intro: "EMIS (ИСУО) is the national education management system for Tajikistan’s colleges and lyceums. Since 2022 the platform has driven the full digital lifecycle of student, HR, scheduling, academic, and financial workflows under the state TVET committee, replacing fragmented Excel files with standardized processes.",
+            architectureTitle: "Architecture",
+            architectureDesc: "Microservice core with gRPC/REST interfaces, a modular React/Next.js frontend, and multilingual UI. Unified data sources and reusable components speed new module delivery, keep role-based access consistent, and make integrations with government systems straightforward.",
+            functionalTitle: "Functional scope",
+            functionalList: [
+                "Student and cohort management: creation, edits, transfers, academic leave, reinstatement, archive, flexible filters, exports.",
+                "Groups and schedules automation: specialty distribution, group creation, day/evening flows, language tracks, weekly schedule builder.",
+                "HR module: staff records, statuses, orders, rate sheets, workload distribution, positions.",
+                "Financial preparation (pre-project FMM): process discovery for per-capita funding, tariff grids, asset accounting, reporting.",
+                "Navigation and permissions: unified RBAC for directors, deputies, HR, teachers, accountants, academic managers, and more.",
+                "Integrations: prepared APIs for education authorities, digital ID registries, and cross-agency data exchange.",
+                "Performance and background jobs: queues and nightly tasks for heavy data operations."
+            ],
+            impactTitle: "Impact",
+            impactList: [
+                "3–5x faster data processing with fewer manual-entry errors.",
+                "Unified documents and reporting for all institutions.",
+                "Architecture ready for AI modules, financial automation, and asset inventory."
+            ],
+            screensTitle: "Selected screens",
+            screensCaption: "Compact preview of key modules (non full-screen to highlight details)",
+        returnLabel: "Return to main page",
+        scrollTopLabel: "Back to top"
+        },
+        "ru": {
+            pageTitle: "ИСУО / EMIS Таджикистан – цифровая система управления профобразованием",
+            pageDescription: "Национальная EMIS для колледжей и лицеев Таджикистана: микросервисы, React/Next.js фронтенд, рольвая модель и готовность к AI-модулям.",
+            pageKeywords: "ИСУО, EMIS, профобразование, микросервисы, React, Next.js, gRPC, REST, цифровизация, Таджикистан, ролевая модель, AI",
+            intro: "ИСУО (EMIS) — национальная система управления профессиональным образованием для колледжей и лицеев Таджикистана. С 2022 года платформа покрывает полный цикл студенческих, кадровых, расписаний, учебных и финансовых процессов под комитетом НПО и СПО, заменяя разрозненные Excel на стандартизированные цифровые процедуры.",
+            architectureTitle: "Архитектура",
+            architectureDesc: "Микросервисное ядро с интерфейсами gRPC/REST, модульный фронтенд на React/Next.js и многоязычный UI. Единые источники данных и переиспользуемые компоненты ускоряют выпуск модулей, обеспечивают консистентные права доступа и упрощают интеграции с госструктурами.",
+            functionalTitle: "Функциональный охват",
+            functionalList: [
+                "Управление студентами и контингентом: создание, правки, переводы, академический отпуск, восстановление, архив, гибкие фильтры, экспорт.",
+                "Автоматизация групп и расписаний: распределение по специальностям, создание групп, дневные/вечерние потоки, языки обучения, конструктор недельных расписаний.",
+                "Кадровый модуль: учет сотрудников, статусов, приказов, ставок, распределения нагрузки, должностей.",
+                "Финансовая подготовка (предпроект ФММ): анализ Excel-процессов, моделирование пер-капита финансирования, тарифных сеток, учёта активов и отчетности.",
+                "Навигация и права: единая ролевая модель для директоров, замов, HR, преподавателей, бухгалтеров, академических менеджеров и др.",
+                "Интеграции: подготовленные API для ведомств, цифровых ID-реестров и обмена данными.",
+                "Производительность и фоновые задачи: очереди и ночные джобы для тяжёлых операций."
+            ],
+            impactTitle: "Результат",
+            impactList: [
+                "Ускорение обработки данных в 3–5 раз и меньше ошибок ручного ввода.",
+                "Унификация документов и отчетности для всех учреждений.",
+                "Архитектура готова к AI-модулям, финансовой автоматизации и инвентаризации активов."
+            ],
+            screensTitle: "Ключевые экраны",
+            screensCaption: "Компактные превью модулей (не на полный экран, чтобы показать детали)",
+        returnLabel: "Вернуться на главную",
+        scrollTopLabel: "Наверх"
+        },
+        "tj": {
+            pageTitle: "ИСУО / EMIS Тоҷикистон – низоми рақамии идоракунии таҳсилоти касбӣ",
+            pageDescription: "Платформаи миллии EMIS барои коллеҷҳо ва литсейҳои Тоҷикистон: меъмории микросервисӣ, фронтенди React/Next.js, моделҳои дастрасӣ ва омодагӣ ба модулҳои AI.",
+            pageKeywords: "ИСУО, EMIS, таҳсилоти касбӣ, микросервис, React, Next.js, рақамисозӣ, Тоҷикистон, дастрасӣ, AI",
+            intro: "ИСУО (EMIS) низоми миллии идоракунии маълумот барои коллеҷҳо ва литсейҳои касбии Тоҷикистон аст. Аз соли 2022 платформа тамоми давраи кор бо донишҷӯён, кадрҳо, ҷадвалҳо, нақшаҳои таълимӣ ва равандҳои молиявиро пӯшонида, ҷадвалҳои парокандаи Excel-ро бо равандҳои ягонаи рақамӣ иваз мекунад.",
+            architectureTitle: "Меъморӣ",
+            architectureDesc: "Ядрои микросервисӣ бо интерфейсҳои gRPC/REST, фронтенди модулӣ дар React/Next.js ва UI-и бисёрзабона. Манбаъҳои ягонаи маълумот ва компонентҳои такрористифодашаванда суръати таҳвили модулҳоро баланд мебардоранд, ҳуқуқҳоро яксон нигоҳ медоранд ва ҳамгироиро бо идораҳо осон мекунанд.",
+            functionalTitle: "Функсионал",
+            functionalList: [
+                "Идоракунии донишҷӯён: эҷод, таҳрир, интиқол, таътили академӣ, барқароркунӣ, архив, филтрҳо ва содирот.",
+                "Гурӯҳҳо ва ҷадвалҳо: тақсим ба ихтисосҳо, эҷоди гурӯҳҳо, ҷараёнҳои рӯзона/шабона, забонҳои таълим, сохтакори ҷадвали ҳафтаина.",
+                "Модули кадрҳо: қайди кормандон, статусҳо, фармонҳо, меъёрҳо, тақсими сарборӣ ва вазифаҳо.",
+                "Омодасозии молиявӣ: таҳлили равандҳои Excel, моделсозии маблағгузории per-capita, шабакаҳои тарифӣ, баҳисобгирии дороиҳо ва ҳисоботдиҳӣ.",
+                "Навигатсия ва ҳуқуқ: модели ягонаи дастрасӣ барои директорон, муовинон, HR, омӯзгорон, муҳосибон ва менеҷерҳои академӣ.",
+                "Ҳамгироӣ: API-ҳо барои вазорат, реестрҳои ID рақамӣ ва мубодилаи додаҳо.",
+                "Иҷро ва вазифаҳои шабона: навбатҳо ва коркарди шабона барои амалиётҳои сангин."
+            ],
+            impactTitle: "Таҷриба",
+            impactList: [
+                "Коркарди маълумот 3–5 маротиба зудтар бо хатоҳои камтар.",
+                "Ҳуҷҷатҳо ва ҳисоботдиҳӣ барои ҳамаи муассисаҳо муттаҳид шуданд.",
+                "Меъморӣ барои модулҳои AI, автоматикунонии молиявӣ ва инвентаризатсия омода аст."
+            ],
+            screensTitle: "Экранҳои намунавӣ",
+            screensCaption: "Пешнамоиши кӯтоҳи модулҳои асосӣ (на дар экрани пурра барои дидани тафсилот)",
+        returnLabel: "Бозгашт ба саҳифаи асосӣ",
+        scrollTopLabel: "Ба боло"
+        }
+    },
+    "zentro": {
+        "en": {
+            pageTitle: "Zentro Wallet – mobile app & product landing",
+            pageDescription: "Fintech wallet redesign with onboarding, KYC, balances, transactions, bonuses, merchant offers, and a responsive marketing site.",
+            pageKeywords: "Zentro Wallet, fintech app, mobile payments, KYC, digital wallet, landing page, design system, UI/UX, bonuses, offers",
+            intro: "Zentro Wallet is a modern mobile payment app paired with a responsive landing page. The work covered app interface design, UX scenarios, visual system, and a product site that drives installs.",
+            scopeTitle: "Product scope",
+            scopeList: [
+                "Full redesign and interface system for a digital wallet across mobile and web touchpoints.",
+                "Onboarding and KYC verification with guided flows.",
+                "Balance control, transactions, and quick actions for daily payments.",
+                "Bonuses, partner offers, and merchant promos surfaced in context.",
+                "Responsive landing page that highlights the product and drives conversion."
+            ],
+            experienceTitle: "Experience and visual system",
+            experienceText: "The app follows a minimalist, confident visual language: precise color system, soft gradients, recognizable icons, and straightforward navigation that keeps flows fast and trustworthy. Onboarding covers registration, phone confirmation, and KYC via a partner provider without adding friction.",
+            appTitle: "In-app experience",
+            appText: "A unified money hub with total balance, quick top-up/withdrawal, QR scanner, recent transactions, and contextual bonus offers. Users can review histories, send to contacts, inspect transaction details, and benefit from partner discounts and cashback.",
+            landingTitle: "Landing page",
+            landingText: "The responsive landing showcases real product screens, focused headlines, and a clear structure. It tells the product story in one scroll and routes users to install.",
+            screensTitle: "Selected screens",
+            screensCaption: "Landing highlights and mobile flows (kept compact for detail)",
+            landingCaption: "Landing hero and feature blocks",
+            appCoverCaption: "App cover screens",
+            mobileCaption: "Core mobile flows",
+            brandCaption: "Brandbook and logo created in-house",
+            returnLabel: "Return to main page",
+            scrollTopLabel: "Back to top"
+        },
+        "ru": {
+            pageTitle: "Zentro Wallet – мобильное приложение и продуктовый лендинг",
+            pageDescription: "Редизайн финтех-кошелька: онбординг, KYC, баланс, транзакции, бонусы, предложения мерчантов и адаптивный маркетинговый сайт.",
+            pageKeywords: "Zentro Wallet, финтех, мобильные платежи, цифровой кошелёк, KYC, лендинг, дизайн-система, UI/UX, бонусы",
+            intro: "Zentro Wallet — современное мобильное платежное приложение с адаптивным лендингом. Выполнены проектирование интерфейсов, UX-сценариев, визуальной системы и продуктового сайта, который приводит пользователя к установке.",
+            scopeTitle: "Задачи продукта",
+            scopeList: [
+                "Полный редизайн и система интерфейсов для цифрового кошелька на мобильных и веб-точках.",
+                "Онбординг и KYC-верификация с понятными шагами.",
+                "Управление балансом, транзакциями и быстрыми действиями для ежедневных платежей.",
+                "Бонусы, акции партнёров и предложения мерчантов в нужном контексте.",
+                "Адаптивный лендинг, который рассказывает о продукте и конвертирует в установку."
+            ],
+            experienceTitle: "Опыт и визуальная система",
+            experienceText: "Минималистичный, уверенный визуальный язык: точная цветовая система, мягкие градиенты, узнаваемая иконография и прямолинейная навигация для быстрых, доверительных сценариев. Онбординг включает регистрацию, подтверждение телефона и KYC через партнёрский сервис без лишнего трения.",
+            appTitle: "Опыт в приложении",
+            appText: "Единый центр управления деньгами: общий баланс, быстрые пополнение/вывод, сканер QR, последние операции и актуальные бонусные предложения. Пользователь видит историю, переводит по контактам, раскрывает детали транзакций и получает выгоды от скидок и кэшбэков.",
+            landingTitle: "Лендинг",
+            landingText: "Адаптивный лендинг с реальными экранами продукта, акцентными заголовками и понятной структурой. Показывает преимущества в один скролл и ведёт к установке.",
+            screensTitle: "Ключевые экраны",
+            screensCaption: "Лендинг и мобильные сценарии (компактный вид для деталей)",
+            landingCaption: "Хиро и блоки преимуществ лендинга",
+            appCoverCaption: "Обложки приложения",
+            mobileCaption: "Основные мобильные сценарии",
+            brandCaption: "Брендбук и логотип разработаны нашей командой",
+            returnLabel: "Вернуться на главную",
+            scrollTopLabel: "Наверх"
+        },
+        "tj": {
+            pageTitle: "Zentro Wallet – барномаи мобилӣ ва лендинги маҳсулот",
+            pageDescription: "Редизайни ҳамёни финтех: онбординг, KYC, тавозун, транзаксияҳо, бонусҳо, пешниҳодҳои шарикон ва сайте, ки мутобиқ мешавад.",
+            pageKeywords: "Zentro Wallet, финтех, пардохти мобилӣ, ҳамёни рақамӣ, KYC, лендинг, системаи дизайн, UI/UX, бонус",
+            intro: "Zentro Wallet — барномаи муосири пардохти мобилӣ бо лендинги мутобиқшаванда. Интерфейсҳо, сенарияҳои UX, системаи визуалӣ ва саҳифаи маҳсулот таҳия шуданд, то корбарро ба насб роҳнамоӣ кунад.",
+            scopeTitle: "Ҳадафҳои маҳсулот",
+            scopeList: [
+                "Редизайни пурра ва системаи интерфейсҳо барои ҳамёни рақамӣ дар мобилӣ ва веб.",
+                "Онбординг ва санҷиши KYC бо қадамҳои фаҳмо.",
+                "Идоракунии тавозун, транзаксияҳо ва амалиёти зуд барои пардохтҳои ҳаррӯза.",
+                "Бонусҳо ва пешниҳодҳои шарикон дар контексти дуруст.",
+                "Лендинги мутобиқшаванда, ки маҳсулотро нишон дода, ба насб мебарад."
+            ],
+            experienceTitle: "Таҷриба ва визуал",
+            experienceText: "Забони визуалии минималистӣ ва боэътимод: палитраи дақиқ, градиентҳои мулоим, иконҳои шинохташаванда ва навигатсияи содда барои сенарияҳои тез. Онбординг сабти ном, тасдиқи телефон ва KYC-ро тавассути хидмати шарик бе монеа мегузаронад.",
+            appTitle: "Таҷриба дар барнома",
+            appText: "Маркази ягонаи идоракунии маблағ: тавозуни умумӣ, пуркунӣ/барориши зуд, сканери QR, амалиётҳои охирин ва пешниҳодҳои бонусӣ. Корбар таърихро мебинад, ба тамосҳо мефиристад, ҷузъиёти транзаксияро меомӯзад ва аз тахфифу кэшбэкҳо истифода мебарад.",
+            landingTitle: "Лендинг",
+            landingText: "Лендинги мутобиқшаванда бо экранҳои воқеии маҳсулот, унвонҳои равшан ва сохтори фаҳмо. Бартариро дар як скролл нишон медиҳад ва ба насб мебарад.",
+            screensTitle: "Экранҳои интихобшуда",
+            screensCaption: "Лендинг ва ҷараёнҳои мобилӣ (намоиши фишурда барои тафсилот)",
+            landingCaption: "Ҳиро ва блокҳои афзалиятҳои лендинг",
+            appCoverCaption: "Сарлавҳаҳои барнома",
+            mobileCaption: "Ҷараёнҳои асосии мобилӣ",
+            brandCaption: "Брендбук ва логотип аз ҷониби мо таҳия шудааст",
+            returnLabel: "Бозгашт ба саҳифаи асосӣ",
+            scrollTopLabel: "Ба боло"
+        }
+    },
+    "rimera": {
+        "en": {
+            pageTitle: "Corporate Telegram bot and admin panel",
+            pageDescription: "Custom Telegram bot with admin panel to streamline internal communication and CRM sync.",
+            pageKeywords: "Telegram bot, admin panel, CRM integration, corporate communication, chat automation",
+            intro: "A corporate Telegram bot with a visual admin panel built to centralize internal communications, collect requests, and sync with existing CRM data. The solution unifies staff messaging, approvals, and reporting inside one controlled channel.",
+            scopeTitle: "Scope",
+            scopeList: [
+                "Bot flows for staff requests, status updates, and internal tickets.",
+                "Admin panel to review, approve, and update submissions.",
+                "CRM integration to keep records aligned with corporate data.",
+                "Role-based access for admins, managers, and operators."
+            ],
+            uxTitle: "Experience",
+            uxText: "Clear menus, templated prompts, and guided actions keep interactions consistent and auditable. The admin panel mirrors the bot flows so operators can resolve issues quickly without jumping tools.",
+            resultTitle: "Outcome",
+            resultList: [
+                "Less context-switching: requests handled inside Telegram with mirrored admin UI.",
+                "Cleaner records via CRM sync and standardized forms.",
+                "Faster handling of internal tickets and staff inquiries."
+            ],
+            screensTitle: "Selected screens",
+            screensCaption: "Compact previews of the bot and admin views",
+            returnLabel: "Return to main page",
+            scrollTopLabel: "Back to top"
+        },
+        "ru": {
+            pageTitle: "Корпоративный Telegram-бот и админ-панель",
+            pageDescription: "Кастомный Telegram-бот с админкой для упорядочения коммуникаций и синхронизации с CRM.",
+            pageKeywords: "Telegram бот, админ-панель, интеграция с CRM, корпоративные коммуникации, автоматизация",
+            intro: "Корпоративный Telegram-бот с визуальной админ-панелью для централизованного сбора заявок, статусов и запросов сотрудников. Решение объединяет коммуникации, согласования и отчётность в одном управляемом канале.",
+            scopeTitle: "Задачи",
+            scopeList: [
+                "Сценарии бота для заявок, статусов и внутренних тикетов.",
+                "Админ-панель для просмотра, утверждения и обновления обращений.",
+                "Интеграция с CRM для синхронизации записей.",
+                "Ролевой доступ для админов, менеджеров и операторов."
+            ],
+            uxTitle: "Опыт",
+            uxText: "Понятные меню, шаблонные подсказки и пошаговые действия обеспечивают единообразие и прозрачность. Админка повторяет логіку бота, позволяя операторам быстро закрывать обращения без смены инструментов.",
+            resultTitle: "Результат",
+            resultList: [
+                "Меньше переключений контекста: заявки обрабатываются в Telegram с зеркальной админкой.",
+                "Чище данные за счёт синхронизации с CRM и стандартизированных форм.",
+                "Быстрая обработка внутренних тикетов и запросов сотрудников."
+            ],
+            screensTitle: "Ключевые экраны",
+            screensCaption: "Компактные превью бота и админ-панели",
+            returnLabel: "Вернуться на главную",
+            scrollTopLabel: "Наверх"
+        },
+        "tj": {
+            pageTitle: "Боти корпоративии Telegram ва панели админ",
+            pageDescription: "Боти фармоишии Telegram бо админка барои танзими коммуникация ва ҳамгироӣ бо CRM.",
+            pageKeywords: "Telegram бот, админ панел, ҳамгироӣ CRM, коммуникацияи корпоративӣ, автоматизатсия",
+            intro: "Боти корпоративии Telegram бо панели визуалии админ, ки ҷамъоварии дархостҳо, мақомҳо ва муроҷиатҳои кормандонро мутамарказ мекунад. Ҳал ба як канали идорашаванда барои гуфтугӯ, мувофиқа ва ҳисоботдиҳӣ табдил медиҳад.",
+            scopeTitle: "Вазифаҳо",
+            scopeList: [
+                "Ҷараёнҳои бот барои дархостҳо, ҳолатҳо ва тикетҳои дохилӣ.",
+                "Панели админ барои дидан, тасдиқ ва навсозии муроҷиатҳо.",
+                "Ҳамгироӣ бо CRM барои ҳамоҳангии сабтҳо.",
+                "Дастрасии нақшдор барои админҳо, менеҷерҳо ва операторҳо."
+            ],
+            uxTitle: "Таҷриба",
+            uxText: "Менюҳои равшан, пешниҳодҳои қолабӣ ва қадамҳои роҳнамо таҷрибаро яксон ва назоратшаванда нигоҳ медорад. Панели админ ҷараёнҳои ботро такрор мекунад, то операторон бе иваз кардани асбобҳо муроҷиатҳоро зуд ҳал кунанд.",
+            resultTitle: "Натиҷа",
+            resultList: [
+                "Кам шудани ивазкунии контекст: дархостҳо дар Telegram бо UI-и админ баррасӣ мешаванд.",
+                "Маълумоти тоза тавассути ҳамгироӣ бо CRM ва формаҳои стандартӣ.",
+                "Баррасии тезтари тикетҳо ва дархостҳои дохилии кормандон."
+            ],
+            screensTitle: "Экранҳои намунавӣ",
+            screensCaption: "Пешнамоиши кӯтоҳи бот ва панели админ",
+            returnLabel: "Бозгашт ба саҳифаи асосӣ",
+            scrollTopLabel: "Ба боло"
+        }
+    },
+    "mobileapp": {
+        "en": {
+            pageTitle: "Bus Driver App — shifts, routes, and reports",
+            pageDescription: "Mobile app and web panel for bus depots: start/end shifts, routes, odometer, issues, fuel, Z-reports, and analytics.",
+            pageKeywords: "bus driver app, transport operations, shift tracking, route logging, odometer, fleet management, FlutterFlow, Node.js",
+            intro: "A mobile app and web panel for bus drivers and depot staff that digitizes daily routines: shift registration, route parameters, issue reporting, fuel and Z-reports, and end-of-day summaries. Built with FlutterFlow plus Node.js and React for the web/admin side.",
+            scopeTitle: "Scope",
+            scopeList: [
+                "Driver onboarding, daily shift start/stop, bus assignment, and route overview.",
+                "Vehicle state checks, odometer input, and issue reporting via in-app forms.",
+                "Route guidance with waypoints and direction changes during the shift.",
+                "Fuel data, Z-report entry, and end-of-day summaries.",
+                "Web panel for dispatch to stay synchronized with driver data."
+            ],
+            flowTitle: "Workday flow",
+            flowText: "The driver logs in, sees the upcoming shift, bus number, and schedule. Simple actions mark shift start, vehicle condition, odometer, and issues. During the route, the app shows planned stops and time controls; at close-out, the driver submits completed trips, kilometers, fuel, Z-report, and shift metrics.",
+            featuresTitle: "Extended features",
+            featuresList: [
+                "Profile management and personal data updates.",
+                "Schedules, assigned buses, emergency contacts, and operator numbers.",
+                "Payslips module plus stats and analytics for depot managers.",
+                "Alarms to calculate departure from home and arrival to depot based on the shift.",
+                "Route analytics to compare options by distance, on-line time, and return-to-depot windows."
+            ],
+            resultTitle: "Outcome",
+            resultList: [
+                "Paperless daily reporting and synchronized data between drivers and dispatch.",
+                "Faster close-out with automated day summaries.",
+                "Clear visibility into performance, routes, and operational metrics."
+            ],
+            screensTitle: "Selected screens",
+            screensCaption: "Vertical mobile screens with rounded framing",
+            returnLabel: "Return to main page",
+            scrollTopLabel: "Back to top"
+        },
+        "ru": {
+            pageTitle: "Приложение для водителей — смены, маршруты и отчёты",
+            pageDescription: "Мобильное приложение и веб-панель для автопарков: старт/конец смены, маршруты, одометр, неисправности, топливо, Z-отчёты и аналитика.",
+            pageKeywords: "приложение для водителей, учёт смен, маршруты, одометр, автопарк, FlutterFlow, Node.js, отчётность",
+            intro: "Мобильное приложение и веб-панель для водителей и диспетчеров: автоматизация ежедневной рутины от регистрации смены и параметров рейса до итоговых отчётов и расчётных листков. Реализовано на FlutterFlow (мобайл) и Node.js + React (сервер и веб) с полной синхронизацией данных.",
+            scopeTitle: "Задачи",
+            scopeList: [
+                "Онбординг водителя, старт/завершение смены, назначение автобуса и просмотр маршрута.",
+                "Отметка состояния автобуса, ввод одометра и фиксация неисправностей через формы.",
+                "План маршрута с точками и сменой направлений в ходе рейса.",
+                "Заправка, ввод Z-отчёта и заполнение итогов дня.",
+                "Веб-панель для диспетчерской с синхронизацией данных."
+            ],
+            flowTitle: "Рабочий день",
+            flowText: "Водитель авторизуется, видит смену, маршрут и автобус. Простые действия: старт смены, проверка состояния, одометр, сообщения о поломках. В пути доступны точки маршрута и контроль времени; в конце смены — рейсы, километраж, топливо, Z-отчёт и ключевые показатели.",
+            featuresTitle: "Расширенные возможности",
+            featuresList: [
+                "Управление профилем и персональными данными.",
+                "Расписания, закреплённые борта, экстренные контакты и номера операторов.",
+                "Модуль расчётных листков, статистика и аналитика для автопарка.",
+                "Будильники для выезда из дома и прибытия в парк по графику.",
+                "Аналитика маршрутов: выбор оптимальных графиков по дистанции, времени на линии и возвращению в парк."
+            ],
+            resultTitle: "Результат",
+            resultList: [
+                "Безбумажный учёт смен с синхронизацией между водителями и диспетчерами.",
+                "Быстрое закрытие смены с автоматизированной сводкой дня.",
+                "Прозрачность показателей по маршрутам и эффективности работы."
+            ],
+            screensTitle: "Ключевые экраны",
+            screensCaption: "Вертикальные мобильные экраны с закруглёнными углами",
+            returnLabel: "Вернуться на главную",
+            scrollTopLabel: "Наверх"
+        },
+        "tj": {
+            pageTitle: "Барнома барои ронандагон — смена, маршрут ва ҳисобот",
+            pageDescription: "Барномаи мобилӣ ва панели веб барои автопарк: оғози смена, маршрутҳо, одометр, носозиҳо, сӯзишворӣ, Z-отчёт ва аналитика.",
+            pageKeywords: "барномаи ронанда, смена, маршрут, одометр, автопарк, FlutterFlow, Node.js, ҳисобот",
+            intro: "Барномаи мобилӣ ва панели веб барои ронандагон ва диспетчерҳо, ки кори ҳаррӯзаро рақамӣ мекунад: аз қайди смена ва параметрҳои рейс то ҳисоботҳо ва варақаҳои ҳисоб. Мобил дар FlutterFlow, сервер ва веб дар Node.js + React бо ҳамоҳангии пурраи маълумот.",
+            scopeTitle: "Вазифаҳо",
+            scopeList: [
+                "Онбординг, оғоз/анҷоми смена, таъини автобус ва дидани маршрут.",
+                "Санҷиши ҳолати автобус, ворид кардани одометр ва хабар додани носозиҳо.",
+                "Маршрут бо нуқтаҳо ва ивазкунии самт дар ҷараёни рейс.",
+                "Маълумоти сӯзишворӣ, Z-отчёт ва натиҷаҳои рӯз.",
+                "Панели веб барои диспетчер бо ҳамоҳангии маълумот."
+            ],
+            flowTitle: "Рӯзи корӣ",
+            flowText: "Ронанда ворид шуда, смена, автобус ва графикро мебинад. Амалҳои оддӣ: оғози смена, ҳолати нақлиёт, одометр, иттилоъ дар бораи носозӣ. Дар роҳ нуқтаҳои маршрут ва назорати вақт дастрас аст; дар анҷом — рейсҳо, километр, сӯзишворӣ, Z-отчёт ва нишондиҳандаҳои асосӣ.",
+            featuresTitle: "Имконот",
+            featuresList: [
+                "Идоракунии профил ва маълумоти шахсӣ.",
+                "Ҷадвалҳо, бортҳои муқарраркардашуда, тамосҳои изтирорӣ ва рақамҳои оператор.",
+                "Варақаҳои ҳисоб, статистика ва аналитика барои автопарк.",
+                "«Зангҳо» барои ҳисоб кардани баромад аз хона ва омадан ба парк аз рӯи график.",
+                "Аналитикаи маршрут барои интихоби графики беҳтарин аз рӯи масофа ва вақти хати."
+            ],
+            resultTitle: "Натиҷа",
+            resultList: [
+                "Ҳисоботи рақамии смена бо ҳамоҳангии байни ронандагон ва диспетчерҳо.",
+                "Анҷоми тезтари смена бо хулосаи худкори рӯз.",
+                "Шаффофияти нишондиҳандаҳо оид ба маршрут ва самаранокӣ."
+            ],
+            screensTitle: "Экранҳои намунавӣ",
+            screensCaption: "Экранҳои амудии мобилӣ бо кунҷҳои мудаввар",
+            returnLabel: "Бозгашт ба саҳифаи асосӣ",
+            scrollTopLabel: "Ба боло"
+        }
+    }
+} %}
+
+{% set translationGroup = portfolioTranslations[pageType] or portfolioTranslations["web-development"] %}
+{% set currentPortfolioTranslation = translationGroup[language] or translationGroup["en"] %}
+
 {% set pageTitle = null %}
 {% set pageDescription = null %}
 {% set keywords = null %}
 {% set icons = {} %}
 
 {% if pageType == 'web-development' %}
-    {% set pageTitle = 'Web-development & design' %}
-    {% set pageDescription = 'Expert web development services crafting responsive and user-friendly websites to engage your audience and drive success.' %}
-    {% set keywords = 'Web development, Responsive websites, User-friendly design, Website development, Custom websites, Front-end development, Back-end development, Web application development, Professional web developers, Custom coding' %}
-{% elif pageType == 'thesouth' %}
-    {% set pageTitle = 'Web-development & design' %}
-    {% set pageDescription = 'Creative design services offering innovative and visually appealing graphics, branding, and UI/UX solutions to make your brand stand out.' %}
-    {% set keywords = 'Design services, Graphic design, Branding, UI/UX design, Visual design, Creative design, Logo design, Brand identity, User interface design, User experience' %}
+    {% set pageTitle = currentPortfolioTranslation.pageTitle %}
+    {% set pageDescription = currentPortfolioTranslation.pageDescription %}
+    {% set keywords = currentPortfolioTranslation.pageKeywords %}
+{% elif pageType == 'zentro' %}
+    {% set pageTitle = currentPortfolioTranslation.pageTitle %}
+    {% set pageDescription = currentPortfolioTranslation.pageDescription %}
+    {% set keywords = currentPortfolioTranslation.pageKeywords %}
 {% elif pageType == 'rimera' %}
-    {% set pageTitle = 'Telegram bot with interface' %}
-    {% set pageDescription = 'Develop custom mobile apps and chatbots, including web apps and Telegram bots, to meet all your business needs.' %}
-    {% set keywords = 'Mobile app development, Chatbot creation, Web applications, Telegram bots, Internal correspondence management, Custom mobile apps, Business communication solutions, Chatbot development, Organizational tools, Custom software development, Mobile applications, Business automation, Communication platforms, AI chatbots, Custom app solutions' %}
-{% elif pageType == 'zippy' %}
-    {% set pageTitle = 'Mobile app' %}
-    {% set pageDescription = 'Boost your brand’s online visibility with our strategic SMM marketing services tailored to effectively engage your target audience.' %}
-    {% set keywords = 'SMM marketing, Social media marketing, Online visibility, Brand awareness, Audience engagement, Social media strategy, Digital marketing, Marketing campaigns, Social media advertising, Content creation' %}
+    {% set pageTitle = currentPortfolioTranslation.pageTitle %}
+    {% set pageDescription = currentPortfolioTranslation.pageDescription %}
+    {% set keywords = currentPortfolioTranslation.pageKeywords %}
+{% elif pageType == 'mobileapp' %}
+    {% set pageTitle = currentPortfolioTranslation.pageTitle %}
+    {% set pageDescription = currentPortfolioTranslation.pageDescription %}
+    {% set keywords = currentPortfolioTranslation.pageKeywords %}
 {% endif %}
 
 {% if pageType == 'web-development' %}
     {% set icons = {
         node: 'NodeIcon',
         react: 'ReactIcon',
-        ps: 'PhotoshopIcon',
         figma: 'FigmaIcon'
     } %}
-{% elif pageType == 'thesouth' %}
+{% elif pageType == 'zentro' %}
     {% set icons = {
         node: 'NodeIcon',
-        react: 'ReactIcon',
+        flutter: 'FlutterIcon',
         figma: 'FigmaIcon'
     } %}
 {% elif pageType == 'rimera' %}
@@ -40,7 +398,7 @@
         ps: 'PostgresqlIcon',
         figma: 'FigmaIcon'
     } %}
-{% elif pageType == 'zippy' %}
+{% elif pageType == 'mobileapp' %}
     {% set icons = {
         node: 'NodeIcon',
         flutter: 'FlutterIcon',
@@ -51,13 +409,16 @@
 {% extends "layouts/portfolio.njk" %}
 
 {% block mainContent %}
-    <button class="button portfolio__button"></button>
+<section class="portfolio portfolio--detail section">
+    <div class="container container__medium portfolio__nav">
+        <button class="button portfolio__button portfolio__button--home">{{ currentPortfolioTranslation.returnLabel }}</button>
+    </div>
     {% if pageType == 'web-development' %}
-        <div class="container container__medium">
+        <div class="container container__medium portfolio__section">
             <h1 class="portfolio__title">{{ pageTitle }}</h1>
             <div class="portfolio__description--wrapper">
                 <div class="portfolio__description">
-                    Design of a multi-page website in calming, soothing tones for selling online meditation courses. Developed using Node.js. Provided short recordings of daily practices to help users select programs tailored to their needs. Enabled users to choose multiple courses and send requests directly to the administrator. Created and integrated a Telegram bot to process form data and notify the admin of new inquiries.
+                    {{ currentPortfolioTranslation.intro }}
                 </div>
                 <div class="portfolio__icons">
                     <svg class="portfolio__icons--services__icons portfolio__icons--services__icons--long">
@@ -66,87 +427,57 @@
                     <svg class="portfolio__icons--services__icons">
                         <use xlink:href="#{{ icons.react }}"></use>
                     </svg>
-                    <svg class="portfolio__icons--services__icons">
-                        <use xlink:href="#{{ icons.ps }}"></use>
-                    </svg>
-                    <svg class="portfolio__icons--services__icons">
-                        <use xlink:href="#{{ icons.figma }}"></use>
-                    </svg>
                 </div>
             </div>
-            <img src="/img/portfolio/meditary_cover.webp" alt="Meditary portfolio cover">
+            <div class="portfolio__description portfolio__description--version">
+                {{ currentPortfolioTranslation.architectureTitle }}
+            </div>
+            <p class="portfolio__description">
+                {{ currentPortfolioTranslation.architectureDesc }}
+            </p>
+            <div class="portfolio__description portfolio__description--version">
+                {{ currentPortfolioTranslation.functionalTitle }}
+            </div>
+            <ul class="portfolio__description portfolio__description--list">
+                {% for item in currentPortfolioTranslation.functionalList %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+            <div class="portfolio__description portfolio__description--version">
+                {{ currentPortfolioTranslation.impactTitle }}
+            </div>
+            <ul class="portfolio__description portfolio__description--list">
+                {% for item in currentPortfolioTranslation.impactList %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+            <div class="portfolio__media portfolio__media--wide">
+                <img src="/img/portfolio/emis_mainemis.webp" alt="EMIS Tajikistan main interface overview">
+            </div>
             <h2 class="section__title">
-                <div class="section__title--text">Full view</div>
+                <div class="section__title--text">{{ currentPortfolioTranslation.screensTitle }}</div>
             </h2>
-            <div class="portfolio__description portfolio__description--version">On desktop version of the website</div>
-            <img src="/img/portfolio/meditary_portfolio.webp" alt="Meditary portfolio">
-        </div>
-    {% elif pageType == 'thesouth' %}
-        <div class="container container__medium">
-            <h1 class="portfolio__title">{{ pageTitle }}</h1>
-            <div class="portfolio__description--wrapper">
-                <p class="portfolio__description">
-                    This project, built with Node.js and React, delivers a seamless experience for both owners and tenants. It features a dynamic real estate website for users to browse properties and a tenant profile system for personalized access. Additionally, the system integrates with a Telegram bot, streamlining management by handling tenant complaints and providing real-time reports on rent statuses.
-                </p>
-                <div class="portfolio__icons portfolio__icons--column">
-                    <svg class="portfolio__icons--services__icons portfolio__icons--services__icons--long">
-                        <use xlink:href="#{{ icons.node }}"></use>
-                    </svg>
-                    <svg class="portfolio__icons--services__icons">
-                        <use xlink:href="#{{ icons.react }}"></use>
-                    </svg>
-                    <svg class="portfolio__icons--services__icons">
-                        <use xlink:href="#{{ icons.figma }}"></use>
-                    </svg>
+            <div class="portfolio__description portfolio__description--version">{{ currentPortfolioTranslation.screensCaption }}</div>
+            <div class="portfolio__media-grid">
+                <div class="portfolio__media portfolio__media--compact">
+                    <img src="/img/portfolio/emis_ai.webp" alt="EMIS AI chat for management tasks">
+                </div>
+                <div class="portfolio__media portfolio__media--compact">
+                    <img src="/img/portfolio/emis_map.webp" alt="EMIS interactive map of institutions">
+                </div>
+                <div class="portfolio__media portfolio__media--compact">
+                    <img src="/img/portfolio/emis_charts.webp" alt="EMIS statistics and charts">
                 </div>
             </div>
-            <img src="/img/portfolio/thesouth_cover.webp" alt="TheSouth portfolio cover">
-            <h2 class="section__title">
-                <div class="section__title--text">Two pages' view</div>
-            </h2>
-            <div class="portfolio__description portfolio__description--version">On desktop version of the website</div>
-            <div class="portfolio__images">
-                <img class="portfolio__images--flexible" src="/img/portfolio/thesouth_portfolio1.webp" alt="TheSouth portfolio">
-                <img class="portfolio__images--flexible" src="/img/portfolio/thesouth_portfolio2.webp" alt="TheSouth portfolio">
-            </div>
         </div>
-    {% elif pageType == 'rimera' %}
-    <div class="container container__medium">
+    {% elif pageType == 'zentro' %}
+        <div class="container container__medium portfolio__section">
             <h1 class="portfolio__title">{{ pageTitle }}</h1>
             <div class="portfolio__description--wrapper">
-                <p class="portfolio__description">
-                    Development of a Telegram bot for corporate communication needs, including integration with the internal CRM system. Design of the Telegram bot's administrator panel interface, and creation and configuration of corporate content within the bot.
-                </p>
-                <div class="portfolio__icons portfolio__icons--column">
-                    <svg class="portfolio__icons--services__icons portfolio__icons--services__icons--long">
-                        <use xlink:href="#{{ icons.node }}"></use>
-                    </svg>
-                    <svg class="portfolio__icons--services__icons">
-                        <use xlink:href="#{{ icons.ps }}"></use>
-                    </svg>
-                    <svg class="portfolio__icons--services__icons">
-                        <use xlink:href="#{{ icons.figma }}"></use>
-                    </svg>
+                <div class="portfolio__description">
+                    {{ currentPortfolioTranslation.intro }}
                 </div>
-            </div>
-            <img src="/img/portfolio/tg_cover.webp" alt="Telegram Rimera portfolio cover">
-            <h2 class="section__title">
-                <div class="section__title--text">Admin panel view</div>
-            </h2>
-            <div class="portfolio__description portfolio__description--version">On desktop version of the website</div>
-            <div class="portfolio__images">
-                <img class="portfolio__images--decorative portfolio__images--decorative--top" src="/img/portfolio/max_top_tg.webp" alt="Rimera portfolio">
-                <img class="portfolio__images--decorative--middle" src="/img/portfolio/tg_portfolio.webp" alt="Rimera portfolio">
-            </div>
-        </div>
-    {% elif pageType == 'zippy' %}
-    <div class="container container__medium">
-            <h1 class="portfolio__title">{{ pageTitle }}</h1>
-            <div class="portfolio__description--wrapper">
-                <p class="portfolio__description">
-                    ZippyPay is a user-friendly mobile wallet designed for secure transactions. The app allows users to track their transaction history and manage their finances easily, with a clear, intuitive interface. It also features customizable themes, offering users the flexibility to choose between different styles to enhance their experience. Built with security at its core, ZippyPay ensures that user data remains protected while delivering a smooth, efficient digital payment experience.
-                </p>
-                <div class="portfolio__icons portfolio__icons--column">
+                <div class="portfolio__icons">
                     <svg class="portfolio__icons--services__icons portfolio__icons--services__icons--long">
                         <use xlink:href="#{{ icons.node }}"></use>
                     </svg>
@@ -158,21 +489,200 @@
                     </svg>
                 </div>
             </div>
-            <img src="/img/portfolio/zippy_cover.webp" alt="Zippy wallet portfolio cover">
-            <h2 class="section__title">
-                <div class="section__title--text">Themes</div>
-            </h2>
-            <div class="portfolio__description portfolio__description--version">The app offers a selection of original themes, including a vibrant aquamarine and purple theme, alongside a sleek, colorful dark mode. These customizable options enhance user experience, allowing for personalization based on individual preferences.</div>
-            <div class="portfolio__images">
-                <img src="/img/portfolio/zippy_themes.webp" alt="Zippy portfolio">
+            <div class="portfolio__description portfolio__description--version">
+                {{ currentPortfolioTranslation.scopeTitle }}
             </div>
-                        <h2 class="section__title">
-                <div class="section__title--text">Main theme</div>
+            <ul class="portfolio__description portfolio__description--list">
+                {% for item in currentPortfolioTranslation.scopeList %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+            <div class="portfolio__description portfolio__description--version">
+                {{ currentPortfolioTranslation.experienceTitle }}
+            </div>
+            <p class="portfolio__description">
+                {{ currentPortfolioTranslation.experienceText }}
+            </p>
+            <div class="portfolio__description portfolio__description--version">
+                {{ currentPortfolioTranslation.appTitle }}
+            </div>
+            <p class="portfolio__description">
+                {{ currentPortfolioTranslation.appText }}
+            </p>
+            <div class="portfolio__description portfolio__description--version">
+                {{ currentPortfolioTranslation.landingTitle }}
+            </div>
+            <p class="portfolio__description">
+                {{ currentPortfolioTranslation.landingText }}
+            </p>
+            <div class="portfolio__description portfolio__description--version">
+                {{ currentPortfolioTranslation.landingCaption }}
+            </div>
+            <div class="portfolio__media-row">
+                <div class="portfolio__media portfolio__media--wide">
+                    <img src="/img/portfolio/zentro.webp" alt="Zentro landing hero">
+                </div>
+                <div class="portfolio__media portfolio__media--wide">
+                    <img src="/img/portfolio/zentro_features.webp" alt="Zentro landing feature highlights">
+                </div>
+            </div>
+            <h2 class="section__title">
+                <div class="section__title--text">{{ currentPortfolioTranslation.screensTitle }}</div>
             </h2>
-            <div class="portfolio__description portfolio__description--version">The primary theme of the app features an eye-catching combination of aquamarine and purple, providing a clean and modern look. This theme is showcased across multiple screens, highlighting the wallet's smooth navigation, transaction tracking, and user-friendly interface, ensuring an efficient and aesthetically pleasing experience.</div>
-            <div class="portfolio__images">
-                <img src="/img/portfolio/zippy_screens.webp" alt="Zippy portfolio">
+            <div class="portfolio__description portfolio__description--version">{{ currentPortfolioTranslation.screensCaption }}</div>
+            <div class="portfolio__media portfolio__media--wide">
+                <img src="/img/portfolio/zentro_app.webp" alt="Zentro app cover">
+            </div>
+            <div class="portfolio__media portfolio__media--compact">
+                <img src="/img/portfolio/zentro_app-main-screen.webp" alt="Zentro app main screen">
+            </div>
+            <div class="portfolio__media-grid">
+                <div class="portfolio__media portfolio__media--compact">
+                    <img src="/img/portfolio/zentro_app-offers.webp" alt="Zentro app offers">
+                </div>
+                <div class="portfolio__media portfolio__media--compact">
+                    <img src="/img/portfolio/zentro_app-wallet.webp" alt="Zentro app wallet view">
+                </div>
+                <div class="portfolio__media portfolio__media--compact">
+                    <img src="/img/portfolio/zentro_app-offer-page.webp" alt="Zentro app offer details">
+                </div>
+            </div>
+            <div class="portfolio__description portfolio__description--version">
+                {{ currentPortfolioTranslation.brandCaption }}
+            </div>
+        </div>
+    {% elif pageType == 'rimera' %}
+        <div class="container container__medium portfolio__section">
+            <h1 class="portfolio__title">{{ pageTitle }}</h1>
+            <div class="portfolio__description--wrapper">
+                <div class="portfolio__description">
+                    {{ currentPortfolioTranslation.intro }}
+                </div>
+                <div class="portfolio__icons">
+                    <svg class="portfolio__icons--services__icons portfolio__icons--services__icons--long">
+                        <use xlink:href="#{{ icons.node }}"></use>
+                    </svg>
+                    <svg class="portfolio__icons--services__icons">
+                        <use xlink:href="#{{ icons.ps }}"></use>
+                    </svg>
+                    <svg class="portfolio__icons--services__icons">
+                        <use xlink:href="#{{ icons.figma }}"></use>
+                    </svg>
+                </div>
+            </div>
+            <div class="portfolio__description portfolio__description--version">
+                {{ currentPortfolioTranslation.scopeTitle }}
+            </div>
+            <ul class="portfolio__description portfolio__description--list">
+                {% for item in currentPortfolioTranslation.scopeList %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+            <div class="portfolio__description portfolio__description--version">
+                {{ currentPortfolioTranslation.uxTitle }}
+            </div>
+            <p class="portfolio__description">
+                {{ currentPortfolioTranslation.uxText }}
+            </p>
+            <div class="portfolio__description portfolio__description--version">
+                {{ currentPortfolioTranslation.resultTitle }}
+            </div>
+            <ul class="portfolio__description portfolio__description--list">
+                {% for item in currentPortfolioTranslation.resultList %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+            <h2 class="section__title">
+                <div class="section__title--text">{{ currentPortfolioTranslation.screensTitle }}</div>
+            </h2>
+            <div class="portfolio__description portfolio__description--version">{{ currentPortfolioTranslation.screensCaption }}</div>
+            <div class="portfolio__media portfolio__media--wide">
+                <img src="/img/portfolio/tg_cover.webp" alt="Corporate Telegram bot cover">
+            </div>
+            <div class="portfolio__media portfolio__media--wide">
+                <img src="/img/portfolio/tg_portfolio.webp" alt="Telegram bot and admin panel screens">
+            </div>
+            <div class="portfolio__media portfolio__media--compact">
+                <img src="/img/portfolio/max_top_tg.webp" alt="Telegram bot interactions preview">
+            </div>
+        </div>
+    {% elif pageType == 'mobileapp' %}
+        <div class="container container__medium portfolio__section">
+            <h1 class="portfolio__title">{{ pageTitle }}</h1>
+            <div class="portfolio__description--wrapper">
+                <div class="portfolio__description">
+                    {{ currentPortfolioTranslation.intro }}
+                </div>
+                <div class="portfolio__icons">
+                    <svg class="portfolio__icons--services__icons portfolio__icons--services__icons--long">
+                        <use xlink:href="#{{ icons.node }}"></use>
+                    </svg>
+                    <svg class="portfolio__icons--services__icons portfolio__icons--services__icons--long">
+                        <use xlink:href="#{{ icons.flutter }}"></use>
+                    </svg>
+                    <svg class="portfolio__icons--services__icons">
+                        <use xlink:href="#{{ icons.figma }}"></use>
+                    </svg>
+                </div>
+            </div>
+            <div class="portfolio__description portfolio__description--version">
+                {{ currentPortfolioTranslation.scopeTitle }}
+            </div>
+            <ul class="portfolio__description portfolio__description--list">
+                {% for item in currentPortfolioTranslation.scopeList %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+            <div class="portfolio__description portfolio__description--version">
+                {{ currentPortfolioTranslation.flowTitle }}
+            </div>
+            <p class="portfolio__description">
+                {{ currentPortfolioTranslation.flowText }}
+            </p>
+            <div class="portfolio__description portfolio__description--version">
+                {{ currentPortfolioTranslation.featuresTitle }}
+            </div>
+            <ul class="portfolio__description portfolio__description--list">
+                {% for item in currentPortfolioTranslation.featuresList %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+            <div class="portfolio__description portfolio__description--version">
+                {{ currentPortfolioTranslation.resultTitle }}
+            </div>
+            <ul class="portfolio__description portfolio__description--list">
+                {% for item in currentPortfolioTranslation.resultList %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+            <h2 class="section__title">
+                <div class="section__title--text">{{ currentPortfolioTranslation.screensTitle }}</div>
+            </h2>
+            <div class="portfolio__description portfolio__description--version">{{ currentPortfolioTranslation.screensCaption }}</div>
+            <div class="portfolio__media-grid">
+                <div class="portfolio__media portfolio__media--compact">
+                    <img src="/img/portfolio/bus_main.webp" alt="Bus driver app main screen">
+                </div>
+                <div class="portfolio__media portfolio__media--compact">
+                    <img src="/img/portfolio/bus_register.webp" alt="Bus driver shift registration">
+                </div>
+                <div class="portfolio__media portfolio__media--compact">
+                    <img src="/img/portfolio/bus_oparetional.webp" alt="Bus driver operational shift details">
+                </div>
+                <div class="portfolio__media portfolio__media--compact">
+                    <img src="/img/portfolio/bus_editform.webp" alt="Bus driver issue reporting form">
+                </div>
+                <div class="portfolio__media portfolio__media--compact">
+                    <img src="/img/portfolio/bus_summary.webp" alt="Bus driver end of day summary">
+                </div>
+                <div class="portfolio__media portfolio__media--compact">
+                    <img src="/img/portfolio/bus_menu.webp" alt="Bus driver app menu">
+                </div>
             </div>
         </div>
     {% endif %}
+    <div class="container container__medium portfolio__nav portfolio__nav--bottom">
+        <button class="button portfolio__button portfolio__button--top">{{ currentPortfolioTranslation.scrollTopLabel }}</button>
+    </div>
+</section>
 {% endblock %}
