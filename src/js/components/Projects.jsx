@@ -12,28 +12,28 @@ const Projects = () => {
             link: '/web-development',
             title: localization[currentLang].proj1Title,
             summary: localization[currentLang].proj1Desc,
-            cover: '/img/main/meditary.webp',
+            cover: '/img/main/emismain-preview.webp',
         },
         {
-            id: 'design',
-            link: '/thesouth',
+            id: 'zentro',
+            link: '/zentro',
             title: localization[currentLang].proj2Title,
             summary: localization[currentLang].proj2Desc,
-            cover: '/img/main/realestate.webp',
+            cover: '/img/main/zentro-preview.webp',
         },
         {
             id: 'interface',
             link: '/rimera',
             title: localization[currentLang].proj3Title,
             summary: localization[currentLang].proj3Desc,
-            cover: '/img/main/rimera.webp',
+            cover: '/img/main/rimera-preview.webp',
         },
         {
-            id: 'smm',
-            link: '/zippy',
+            id: 'mobileapp',
+            link: '/mobileapp',
             title: localization[currentLang].proj4Title,
             summary: localization[currentLang].proj4Desc,
-            cover: '/img/main/zippy.webp',
+            cover: '/img/main/bus-preview.webp',
         }
     ];
 

@@ -34,7 +34,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const scrollToTopButton = document.querySelector('.footer__button');
     const scrollToProjectsButton = document.querySelector('#startProjectButton');
-    const returnToMainButton = document.querySelector('.portfolio__button');
+    const returnToMainButton = document.querySelector('.portfolio__button--home');
+    const portfolioScrollTopButton = document.querySelector('.portfolio__button--top');
+    const footerYear = document.querySelector('.footer__year');
+    const emitOpenLeadForm = () => {
+        window.dispatchEvent(new CustomEvent('openLeadForm'));
+    };
+
+    if (footerYear) {
+        footerYear.textContent = new Date().getFullYear();
+    }
 
     if (scrollToTopButton) {
         scrollToTopButton.addEventListener('click', () => {
@@ -46,17 +55,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (scrollToProjectsButton) {
-        scrollToProjectsButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: window.innerHeight,
-                behavior: 'smooth'
-            });
-        });
+        scrollToProjectsButton.addEventListener('click', emitOpenLeadForm);
     }
 
     if (returnToMainButton) {
         returnToMainButton.addEventListener('click', () => {
             window.location.href = '/';
+        });
+    }
+
+    if (portfolioScrollTopButton) {
+        portfolioScrollTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
     }
 });

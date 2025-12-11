@@ -76,10 +76,10 @@ const HeroSection = ({ scrollToServices, currencies, callForm, supportedLangs })
         const bandCount = 6;
         const bandState = Array.from({ length: bandCount }).map((_, i) => ({
             angle: (Math.PI * 2 * i) / bandCount,
-            speed: (Math.random() * 0.004 + 0.0015) * (i % 2 ? 1 : -1), // slower rotation
-            widthFactor: Math.random() * 0.14 + 0.2, // narrower bands
+            speed: (Math.random() * 0.004 + 0.0015) * (i % 2 ? 1 : -1),
+            widthFactor: Math.random() * 0.14 + 0.2,
             heightFactor: Math.random() * 0.7 + 1.2,
-            offsetX: (Math.random() - 0.5) * 0.7, // shift so not all strips cross center
+            offsetX: (Math.random() - 0.5) * 0.7,
             offsetY: (Math.random() - 0.5) * 0.5,
             lean: (Math.random() - 0.5) * 0.18,
         }));
@@ -129,16 +129,15 @@ const HeroSection = ({ scrollToServices, currencies, callForm, supportedLangs })
 
                 const bandWidth = radius * band.widthFactor;
                 const bandHeight = radius * band.heightFactor;
-                const grad = ctx.createLinearGradient(-bandWidth / 2, 0, bandWidth / 2, 0);
-                grad.addColorStop(0, 'rgba(0,0,0,0)');
-                grad.addColorStop(0.35, bandColors[idx % bandColors.length]);
-                grad.addColorStop(0.65, bandColors[(idx + 1) % bandColors.length]);
+                const grad = ctx.createRadialGradient(0, 0, bandWidth * 0.05, 0, 0, bandWidth * 0.6);
+                grad.addColorStop(0, bandColors[idx % bandColors.length]);
+                grad.addColorStop(0.5, bandColors[(idx + 1) % bandColors.length]);
                 grad.addColorStop(1, 'rgba(0,0,0,0)');
 
                 ctx.fillStyle = grad;
                 ctx.globalCompositeOperation = 'lighter';
                 ctx.beginPath();
-                ctx.rect(-bandWidth / 2, -bandHeight * 0.6, bandWidth, bandHeight);
+                ctx.ellipse(0, 0, bandWidth / 2, bandHeight / 2, 0, 0, Math.PI * 2);
                 ctx.fill();
                 ctx.restore();
             });
@@ -151,7 +150,6 @@ const HeroSection = ({ scrollToServices, currencies, callForm, supportedLangs })
             ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
             ctx.clip();
 
-            drawBase();
             drawBands();
 
             ctx.restore();
@@ -222,14 +220,24 @@ const HeroSection = ({ scrollToServices, currencies, callForm, supportedLangs })
 
     return (
         <section className="section hero">
-                <div className="hero__background" ref={backgroundRef}>
-                    <div className="hero__glow hero__glow--left"></div>
-                    <div className="hero__glow hero__glow--right"></div>
-                    <div className="hero__orb" ref={orbRef}>
-                        <canvas className="hero__orb-canvas" ref={orbCanvasRef} aria-hidden="true" />
+                    <div className="hero__background" ref={backgroundRef}>
+                        <div className="hero__glow hero__glow--left"></div>
+                        <div className="hero__glow hero__glow--right"></div>
+                        <div className="hero__orb" ref={orbRef}>
+                            <canvas className="hero__orb-canvas" ref={orbCanvasRef} aria-hidden="true" />
+                            <svg className="hero__orb-text" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+                                <defs>
+                                    <path id="orbTextPath" d="M50,6 a44,44 0 1,1 -0.1,0" />
+                                </defs>
+                                <text>
+                                    <textPath href="#orbTextPath" startOffset="0%">
+                                        • Resident of IT Park Dushanbe •
+                                    </textPath>
+                                </text>
+                            </svg>
+                        </div>
+                        <div className="hero__orb-shadow"></div>
                     </div>
-                    <div className="hero__orb-shadow"></div>
-                </div>
             <div className="container container__medium hero__container">
                 <div className="hero__wrapper">
                     <div className="hero__topbar">
