@@ -38,8 +38,15 @@
 } %}
 
 {% set lang = language or 'en' %}
+{% set serviceSlug = slug %}
 {% set service = serviceTranslations[slug] or serviceTranslations["web-development"] %}
 {% set current = service[lang] or service["en"] %}
+
+{% set returnLabels = {
+    "en": "Return to main page",
+    "ru": "Вернуться на главную",
+    "tj": "Бозгашт ба саҳифаи асосӣ"
+} %}
 
 {% set pageTitle = current.title %}
 {% set pageDescription = current.desc %}
@@ -48,13 +55,5 @@
 {% extends "layouts/main.njk" %}
 
 {% block mainContent %}
-<section class="section section__service">
-    <div class="container container__medium">
-        <h1 class="section__title">
-            <div class="section__title--text">{{ current.title }}</div>
-        </h1>
-        <p class="section__desc">{{ current.desc }}</p>
-        <div class="section__note">{{ notes[lang] }}</div>
-    </div>
-</section>
+<div id="service-root"></div>
 {% endblock %}

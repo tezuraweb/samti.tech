@@ -9,6 +9,7 @@ import localization from '../../../assets/json/localization.json';
 const LeadForm = ({ afterSubmit }) => {
     const currentLang = useSelector((state) => state.language?.currentLang || 'en');
     const currentCurrency = useSelector((state) => state.currency?.currentCurrency || 'dollar');
+    const serviceKeys = ['webdev', 'smm', 'seo', 'design', 'tg', 'analytics'];
     const services = [
         localization[currentLang].webdevTitle,
         localization[currentLang].smmTitle,
@@ -18,7 +19,7 @@ const LeadForm = ({ afterSubmit }) => {
         localization[currentLang].analyticsTitle
     ];
 
-    const budgets = {
+    const baseBudgets = {
         'dollar': [
             '$500 - $2000',
             '$2000 - $5000',
@@ -37,6 +38,25 @@ const LeadForm = ({ afterSubmit }) => {
             '31400 сомони - 78500 сомони',
             '78500 сомони+',
         ],
+    };
+
+    const packageBudgets = [
+        'Package: Easy Start ($350)',
+        'Package: Small Site ($500)',
+        'Package: Web App Mini ($800)',
+    ];
+
+    const budgets = Object.fromEntries(
+        Object.entries(baseBudgets).map(([key, list]) => [key, [...list, ...packageBudgets]])
+    );
+
+    const serviceSlugMap = {
+        'web-development': 'webdev',
+        'mobile-apps-bots': 'tg',
+        'smm': 'smm',
+        'seo': 'seo',
+        'design': 'design',
+        'business-analysis': 'analytics',
     };
 
     const initialState = {
@@ -66,6 +86,29 @@ const LeadForm = ({ afterSubmit }) => {
             }));
         }
     }, [savedFormState]);
+
+    useEffect(() => {
+        const pendingRaw = localStorage.getItem('pendingForm');
+        if (pendingRaw) {
+            try {
+                const pending = JSON.parse(pendingRaw);
+                if (pending.serviceSlug) {
+                    const key = serviceSlugMap[pending.serviceSlug];
+                    const idx = serviceKeys.indexOf(key);
+                    if (idx >= 0) {
+                        setFormData(prev => ({ ...prev, service: idx }));
+                    }
+                }
+                if (pending.budget) {
+                    setFormData(prev => ({ ...prev, budget: pending.budget }));
+                }
+            } catch (e) {
+                // ignore bad data
+            }
+            localStorage.removeItem('pendingForm');
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     useEffect(() => {
         const timer = setTimeout(() => setVisible(true), 10);
@@ -150,6 +193,7 @@ const LeadForm = ({ afterSubmit }) => {
     return (
         <div className={`form__popup ${visible ? 'active' : ''}`} onClick={(e) => popupClick(e)}>
             <div className="form__container">
+                <button className="form__button form__button--mobileClose button" type="button" onClick={() => handleClose()} aria-label="Close form">x</button>
                 <form className="form__wrapper" onSubmit={handleSubmit}>
                     <div className="form__column form__column--first">
                         <div className="form__header">
@@ -298,16 +342,18 @@ const LeadForm = ({ afterSubmit }) => {
                     </div>
 
                     <div className="form__column form__column--second">
-                        <button className="form__button form__button--upper button" type="button" onClick={() => handleClose()}>x</button>
-                        <div className="form__service">
-                            <button className="form__service--prev" type="button" onClick={() => handlePrev()}></button>
-                            <div className="form__service--text">{services[formData.service]}</div>
-                            <button className="form__service--next" type="button" onClick={() => handleNext()}></button>
+                        <button className="form__button form__button--upper button" type="button" onClick={() => handleClose()} aria-label="Close form">x</button>
+                        <div className="form__actions">
+                            <div className="form__service">
+                                <button className="form__service--prev" type="button" onClick={() => handlePrev()}></button>
+                                <div className="form__service--text">{services[formData.service]}</div>
+                                <button className="form__service--next" type="button" onClick={() => handleNext()}></button>
+                            </div>
+                            <button className="form__button form__button--lower button" type="submit">
+                                <span className="form__button--desktop">//<br />se<br />nd</span>
+                                <span className="form__button--mobile">// send</span>
+                            </button>
                         </div>
-                        <button className="form__button form__button--lower button" type="submit">
-                            <span className="form__button--desktop">//<br />se<br />nd</span>
-                            <span className="form__button--mobile">// send</span>
-                        </button>
                     </div>
 
                     {error && (

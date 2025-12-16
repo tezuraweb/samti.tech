@@ -5,13 +5,13 @@
     -webkit-appearance: none;
     -webkit-text-size-adjust: none;
 }
-  
+
 html {
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
     background-color: $white;
 }
-  
+
 body {
     margin: 0;
     padding: 0;
@@ -40,7 +40,7 @@ body {
         font-size: 16px;
     }
 }
-  
+
 h1,
 h2,
 h3,
@@ -53,7 +53,7 @@ p {
     margin: 0;
     padding: 0;
 }
-  
+
 a {
     text-decoration: none;
     color: inherit;
@@ -81,15 +81,15 @@ img {
     margin: 0 auto;
 
     &__base {
-        padding: 0 260px;
+        padding: 10px 260px;
     }
 
     &__medium {
-        padding: 0 165px;
+        padding: 10px 165px;
     }
 
     &__wide {
-        padding: 0 50px;
+        padding: 10px 50px;
     }
 
     &__noPadding {
@@ -110,7 +110,7 @@ img {
         &__medium {
             padding: 0 75px;
         }
-    
+
         &__wide {
             padding: 0;
         }
@@ -133,7 +133,7 @@ img {
     &:last-child {
         margin-bottom: 0;
     }
-    
+
     &__title {
         font-family: 'Poppins', 'Sansation', sans-serif;
         font-size: 64px;
@@ -149,17 +149,6 @@ img {
             position: relative;
             display: block;
             z-index: 1;
-        }
-
-        &::after {
-            content: '';
-            width: 100%;
-            height: 25px;
-            background-color: $violet2;
-            position: absolute;
-            bottom: -7px;
-            left: 0;
-            z-index: 0;
         }
     }
 
@@ -201,7 +190,7 @@ img {
             width: 100%;
             padding-left: 50px;
             margin: 50px 0 30px;
-        
+
             &::after {
                 width: 90%;
             }
@@ -209,19 +198,79 @@ img {
     }
 }
 
-.button {
-    background-color: $blue2;
-    color: $white;
-    position: relative;
-    display: block;
-    font-size: 64px;
-    line-height: 1;
-    font-weight: 600;
+.cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 26px;
+    background: linear-gradient(180deg, $greenCorporate 0%, #b8f500 100%);
+    color: #0b0b0e;
     border: none;
+    border-radius: 999px;
+    font-weight: 700;
+    letter-spacing: .5px;
     cursor: pointer;
+    box-shadow: 0 10px 30px rgba(197, 255, 68, .28);
+    transition: transform .2s ease, box-shadow .2s ease;
 
-    @media (max-width: $laptop-breakpoint-1) {
-        font-size: 40px;
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 16px 34px rgba(197, 255, 68, .4);
+    }
+}
+
+.rbtn {
+    width: fit-content;
+    padding: 14px 18px;
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: 600;
+    background: linear-gradient(180deg, rgba($greenCorporate, .22) 0%, rgba($greenCorporate, .08) 100%);
+    color: $white;
+    border: 1px solid rgba($greenCorporate, .4);
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, .25);
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+
+    &:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 0 16px 30px rgba(0, 0, 0, .3);
+        border-color: rgba($greenCorporate, .8);
+    }
+}
+
+.link-inline {
+    color: rgba(255, 255, 255, .78);
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, .5);
+    transition: color .2s ease;
+
+    &:hover {
+        color: $white;
+    }
+}
+
+.link-back {
+    color: rgba(255, 255, 255, .78);
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    &::before {
+        content: '\\';
+        font-size: 16px;
+        color: rgba(219, 255, 0, .9);
     }
 }
 
@@ -240,4 +289,3 @@ img {
         color: $violet;
     }
 }
-  
