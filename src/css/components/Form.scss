@@ -40,6 +40,7 @@
         border-radius: 16px;
         box-shadow: 0 20px 80px rgba(0, 0, 0, .6);
         overflow-y: auto;
+        position: relative;
     }
 
     &__popup.active .form__container {
@@ -198,6 +199,20 @@
             display: none;
         }
 
+        &--mobileClose {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            padding: 0;
+            background: rgba(255, 255, 255, .1);
+            color: $white;
+            display: none;
+            z-index: 2;
+        }
+
         &:hover {
             filter: brightness(1.05);
             transform: translateY(-1px);
@@ -256,6 +271,17 @@
             text-align: center;
             color: $white;
         }
+    }
+
+    &__actions {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        position: sticky;
+        bottom: 0;
+        width: 100%;
+        padding-top: 8px;
+        background: linear-gradient(180deg, rgba(11,13,20,0) 0%, rgba(11,13,20,0.85) 35%, rgba(11,13,20,0.95) 100%);
     }
 
     &__message {
@@ -473,9 +499,7 @@
             font-size: 14px;
 
             &--upper {
-                padding: 12px;
-                margin-bottom: 0;
-                margin-right: 20px;
+                display: none;
             }
 
             &--lower {
@@ -490,6 +514,12 @@
 
             &--desktop {
                 display: none;
+            }
+
+            &--mobileClose {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
             }
         }
     }

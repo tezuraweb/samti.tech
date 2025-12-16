@@ -21,6 +21,13 @@ const HeroSection = ({ scrollToServices, currencies, callForm, supportedLangs })
     const backgroundRef = useRef(null);
     const orbRef = useRef(null);
     const orbCanvasRef = useRef(null);
+    const isSafariRef = useRef(false);
+
+    useEffect(() => {
+        const ua = navigator.userAgent;
+        const safari = /^((?!chrome|android).)*safari/i.test(ua) && !/crios|fxios|edgios/i.test(ua);
+        isSafariRef.current = safari;
+    }, []);
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -66,6 +73,7 @@ const HeroSection = ({ scrollToServices, currencies, callForm, supportedLangs })
 
         const ctx = canvas.getContext('2d');
         const dpr = window.devicePixelRatio || 1;
+        const isSafari = isSafariRef.current;
         let animationId;
         let width = 0;
         let height = 0;
@@ -74,9 +82,10 @@ const HeroSection = ({ scrollToServices, currencies, callForm, supportedLangs })
         let centerY = 0;
 
         const bandCount = 6;
+        const speedMultiplier = isSafari ? 1.35 : 1;
         const bandState = Array.from({ length: bandCount }).map((_, i) => ({
             angle: (Math.PI * 2 * i) / bandCount,
-            speed: (Math.random() * 0.004 + 0.0015) * (i % 2 ? 1 : -1),
+            speed: (Math.random() * 0.004 + 0.0015) * (i % 2 ? 1 : -1) * speedMultiplier,
             widthFactor: Math.random() * 0.14 + 0.2,
             heightFactor: Math.random() * 0.7 + 1.2,
             offsetX: (Math.random() - 0.5) * 0.7,
@@ -94,15 +103,21 @@ const HeroSection = ({ scrollToServices, currencies, callForm, supportedLangs })
 
         const resize = () => {
             const rect = orbEl.getBoundingClientRect();
-            width = rect.width;
-            height = rect.height;
-            radius = Math.min(width, height) / 2;
-            centerX = width / 2;
-            centerY = height / 2;
+            const size = Math.round(Math.min(rect.width, rect.height));
+            width = size;
+            height = size;
+            radius = size / 2;
+            centerX = size / 2;
+            centerY = size / 2;
 
-            canvas.width = width * dpr;
-            canvas.height = height * dpr;
-            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            canvas.style.width = `${size}px`;
+            canvas.style.height = `${size}px`;
+            canvas.style.left = `0`;
+            canvas.style.top = `0`;
+            canvas.width = Math.round(size * dpr);
+            canvas.height = Math.round(size * dpr);
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+            ctx.scale(dpr, dpr);
         };
 
         const drawBase = () => {
@@ -128,7 +143,7 @@ const HeroSection = ({ scrollToServices, currencies, callForm, supportedLangs })
                 ctx.scale(1.1, 1);
 
                 const bandWidth = radius * band.widthFactor;
-                const bandHeight = radius * band.heightFactor;
+                const bandHeight = isSafari ? bandWidth : radius * band.heightFactor;
                 const grad = ctx.createRadialGradient(0, 0, bandWidth * 0.05, 0, 0, bandWidth * 0.6);
                 grad.addColorStop(0, bandColors[idx % bandColors.length]);
                 grad.addColorStop(0.5, bandColors[(idx + 1) % bandColors.length]);
@@ -137,18 +152,27 @@ const HeroSection = ({ scrollToServices, currencies, callForm, supportedLangs })
                 ctx.fillStyle = grad;
                 ctx.globalCompositeOperation = 'lighter';
                 ctx.beginPath();
-                ctx.ellipse(0, 0, bandWidth / 2, bandHeight / 2, 0, 0, Math.PI * 2);
+                if (isSafari) {
+                    ctx.arc(0, 0, bandWidth / 2, 0, Math.PI * 2);
+                } else {
+                    ctx.ellipse(0, 0, bandWidth / 2, bandHeight / 2, 0, 0, Math.PI * 2);
+                }
                 ctx.fill();
                 ctx.restore();
             });
         };
 
         const draw = () => {
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+            ctx.scale(dpr, dpr);
             ctx.clearRect(0, 0, width, height);
             ctx.save();
-            ctx.beginPath();
-            ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
-            ctx.clip();
+            if (!isSafari) {
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, radius * 0.98, 0, Math.PI * 2);
+                ctx.clip();
+            }
+            ctx.globalCompositeOperation = 'lighter';
 
             drawBands();
 
@@ -246,7 +270,7 @@ const HeroSection = ({ scrollToServices, currencies, callForm, supportedLangs })
                                 <use xlinkHref="#LogoMain" />
                             </svg>
                         </div>
-                        <button className="hero__cta" onClick={openForm}>
+                        <button className="cta hero__cta" onClick={openForm}>
                             {localization[currentLang].start}
                         </button>
                         <div className="hero__controls">
@@ -290,7 +314,7 @@ const HeroSection = ({ scrollToServices, currencies, callForm, supportedLangs })
                                 <span className="hero__title--accent">{localization[currentLang].title2}</span>
                             </h1>
                             <div className="hero__subtitle">{localization[currentLang].title3}</div>
-                            <div className="hero__badge-mobile">resident of Dushanbe IT Park</div>
+                            <div className="hero__badge-mobile">Resident of Dushanbe IT Park</div>
                             <div className="hero__meta">
                                 <div className="hero__date--time">{formatTime(currentTime)}</div>
                                 <div className="hero__date--text">{getGreeting(currentLang, currentTime)}</div>
