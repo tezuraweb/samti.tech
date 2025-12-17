@@ -40,16 +40,6 @@ const LeadForm = ({ afterSubmit }) => {
         ],
     };
 
-    const packageBudgets = [
-        'Package: Easy Start ($350)',
-        'Package: Small Site ($500)',
-        'Package: Web App Mini ($800)',
-    ];
-
-    const budgets = Object.fromEntries(
-        Object.entries(baseBudgets).map(([key, list]) => [key, [...list, ...packageBudgets]])
-    );
-
     const serviceSlugMap = {
         'web-development': 'webdev',
         'mobile-apps-bots': 'tg',
@@ -189,6 +179,22 @@ const LeadForm = ({ afterSubmit }) => {
             service: nextInd
         }));
     };
+
+    const selectedServiceKey = serviceKeys[formData.service] || serviceKeys[0];
+    const serviceHasPackages = selectedServiceKey === 'webdev';
+
+    const packageBudgets = [
+        'Package: Easy Start ($350)',
+        'Package: Small Site ($500)',
+        'Package: Web App Mini ($800)',
+    ];
+
+    const budgets = Object.fromEntries(
+        Object.entries(baseBudgets).map(([key, list]) => [
+            key,
+            serviceHasPackages ? [...list, ...packageBudgets] : list,
+        ])
+    );
 
     return (
         <div className={`form__popup ${visible ? 'active' : ''}`} onClick={(e) => popupClick(e)}>

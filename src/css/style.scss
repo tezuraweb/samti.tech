@@ -1,16 +1,14 @@
-@import "./vars/variables";
-@import "./vars/color";
-@import "./vars/fonts";
+@use "./vars/index" as *;
 
-@import "./base";
+@use "./base";
 
-@import "./components/Loader";
-@import "./components/Hero";
-@import "./components/Services";
-@import "./components/Cards";
-@import "./components/Reminder";
-@import "./components/Form";
-@import "./components/Footer";
-@import "./components/Portfolio";
-@import './components/FloatingButton';
-@import './components/ServicePage';
+@use "./components/Loader";
+@use "./components/Hero";
+@use "./components/Services";
+@use "./components/Cards";
+@use "./components/Reminder";
+@use "./components/Form";
+@use "./components/Footer";
+@use "./components/Portfolio";
+@use "./components/FloatingButton";
+@use "./components/ServicePage";

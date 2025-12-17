@@ -1,3 +1,5 @@
+@use '../vars/index' as *;
+
 .form {
     &__popup {
         position: fixed;
@@ -6,7 +8,10 @@
         left: 0;
         right: 0;
         z-index: 1000;
-        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
         background-color: rgba(0, 0, 0, 0.75);
         backdrop-filter: blur(6px);
         visibility: hidden;
@@ -21,16 +26,11 @@
 
     &__container {
         display: block;
-        position: absolute;
-        margin: auto;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        width: 100%;
+        position: relative;
+        margin: 0 auto;
+        width: min(1080px, 100%);
         height: fit-content;
-        max-width: 1080px;
-        max-height: 100%;
+        max-height: calc(100vh - 40px);
         transform: scale(0.94);
         transition: transform .3s;
         padding: 40px;
@@ -98,6 +98,7 @@
         display: flex;
         flex-wrap: wrap;
         gap: 12px;
+        margin-bottom: 0;
     }
 
     &__input {
@@ -155,7 +156,12 @@
             border: 1px solid rgba(255, 255, 255, .15);
             border-radius: 12px;
             padding: 8px;
+            width: 48px;
+            height: 48px;
             background: rgba(255, 255, 255, .04);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         &--input:checked~.form__radio--button {
