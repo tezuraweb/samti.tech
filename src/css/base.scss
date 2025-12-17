@@ -1,3 +1,5 @@
+@use './vars/index' as *;
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -57,12 +59,14 @@ p {
 a {
     text-decoration: none;
     color: inherit;
+    cursor: pointer;
 }
 
 button,
 .button,
 .footer__links--cta {
     user-select: none;
+    cursor: pointer;
 }
 
 ul {

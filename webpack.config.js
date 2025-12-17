@@ -50,7 +50,13 @@ module.exports = {
                             sourceMap: true
                         }
                     },
-                    'sass-loader',
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            api: 'modern',
+                            implementation: require('sass'),
+                        },
+                    },
                 ],
             },
             {

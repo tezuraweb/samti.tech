@@ -31,7 +31,7 @@
         "analyticsDesc": "Data-driven market research and insights to optimize business processes, improve decision-making, and fuel growth with strategic planning.",
         "formName": "Name",
         "formEmail": "Email",
-        "formMessengerId": "Messenger",
+        "formMessengerId": "Messenger ID/username",
         "formBudget": "Budget",
         "formDesc": "Describe your project"
     },
@@ -67,7 +67,7 @@
         "analyticsDesc": "Исследование рынка и анализ данных для оптимизации бизнес-процессов, улучшения принятия решений и стимулирования роста с помощью стратегического планирования.",
         "formName": "Имя",
         "formEmail": "Email",
-        "formMessengerId": "Мессенджер",
+        "formMessengerId": "Мессенджер ID / имя пользователя",
         "formBudget": "Бюджет",
         "formDesc": "Опишите ваш проект"
     },

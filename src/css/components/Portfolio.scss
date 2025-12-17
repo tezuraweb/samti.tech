@@ -1,3 +1,5 @@
+@use '../vars/index' as *;
+
 .portfolio {
     background: $black;
     color: $white;
@@ -23,7 +25,24 @@
     }
 
     &__button {
-        @extend .rbtn;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 26px;
+        background: linear-gradient(180deg, $greenCorporate 0%, #b8f500 100%);
+        color: #0b0b0e;
+        border: none;
+        border-radius: 999px;
+        font-weight: 700;
+        letter-spacing: .5px;
+        cursor: pointer;
+        box-shadow: 0 10px 30px rgba(197, 255, 68, .28);
+        transition: transform .2s ease, box-shadow .2s ease;
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 34px rgba(197, 255, 68, .4);
+        }
     }
 
     &__header {

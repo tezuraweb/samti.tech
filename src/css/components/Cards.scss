@@ -1,3 +1,5 @@
+@use '../vars/index' as *;
+
 .cards {
     margin-top: -150px;
 
@@ -389,6 +391,5 @@
             }
         }
     }
-
 
 }

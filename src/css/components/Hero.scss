@@ -1,3 +1,5 @@
+@use '../vars/index' as *;
+
 .hero {
     position: relative;
     width: 100%;
@@ -181,17 +183,6 @@
         width: 180px;
         height: auto;
         display: block;
-    }
-
-    &__cta {
-        @extend .cta;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-
-        &:hover {
-            transform: translateY(-2px);
-        }
     }
 
     &__controls {
